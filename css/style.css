@@ -790,6 +790,37 @@ section {
   color: white;
 }
 
+/* Certification Card - Red Style */
+.certification-card {
+    background: linear-gradient(135deg, #ffeaea 0%, #ffcdd2 100%);
+    padding: 2rem;
+    border-radius: 16px;
+    display: flex;
+    gap: 2rem;
+    align-items: center;
+    box-shadow: 0 2px 8px rgba(229,57,53,0.08);
+    margin-bottom: 2rem;
+}
+
+.certification-year {
+    font-size: 1.5rem;
+    font-weight: 700;
+    color: #e53935;
+    min-width: 80px;
+}
+
+.certification-content h4 {
+    font-size: 1.3rem;
+    font-weight: 600;
+    margin-bottom: 0.5rem;
+    color: #b71c1c;
+}
+
+.certification-content p {
+    color: #7f1d1d;
+    line-height: 1.6;
+}
+
 /* Responsive Design */
 @media (max-width: 768px) {
   .hamburger {
