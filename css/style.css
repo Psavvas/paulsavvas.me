@@ -212,6 +212,28 @@ body {
   transform: translateY(-2px);
 }
 
+.btn-green {
+  background: #10b981;
+  color: #fff;
+  border: none;
+  border-radius: 8px;
+  padding: 0.75rem 1.5rem;
+  font-size: 1rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background 0.2s, box-shadow 0.2s;
+  box-shadow: 0 2px 8px rgba(16,185,129,0.08);
+  text-decoration: none;
+  display: inline-block;
+}
+
+.btn-green:hover,
+.btn-green:focus {
+  background: #059669;
+  color: #fff;
+  text-decoration: none;
+}
+
 /* Section Styles */
 section {
   padding: 80px 0;
@@ -289,6 +311,12 @@ section {
 /* Experience Section */
 .experience-category {
   margin-bottom: 60px;
+}
+
+.experience-category {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 2rem;
 }
 
 .experience-category h3 {
@@ -380,11 +408,47 @@ section {
   line-height: 1.6;
 }
 
+/* Certification Card - Red Style */
+.certification-card {
+    background: linear-gradient(135deg, #ffeaea 0%, #ffcdd2 100%);
+    padding: 2rem;
+    border-radius: 16px;
+    display: flex;
+    gap: 2rem;
+    align-items: center;
+    box-shadow: 0 2px 8px rgba(229,57,53,0.08);
+    margin-bottom: 2rem;
+}
+
+.certification-year {
+    font-size: 1.5rem;
+    font-weight: 700;
+    color: #e53935;
+    min-width: 80px;
+}
+
+.certification-content h4 {
+    font-size: 1.3rem;
+    font-weight: 600;
+    margin-bottom: 0.5rem;
+    color: #b71c1c;
+}
+
+.certification-content p {
+    color: #7f1d1d;
+    line-height: 1.6;
+}
+
 /* Leadership Grid */
 .leadership-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  grid-template-columns: repeat(2, 1fr);
   gap: 2rem;
+  width: 100%;
+  margin: 0 auto;
+  max-width: 100%; /* Match the award/certification cards' edge-to-edge look */
+  padding-left: 0;
+  padding-right: 0;
 }
 
 .leadership-card {
@@ -394,6 +458,9 @@ section {
   box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
   transition: transform 0.3s ease;
   border-left: 4px solid #2563eb;
+  width: 100%;        /* Fill grid cell */
+  max-width: 100%;    /* No extra margin inside grid cell */
+  margin: 0;          /* Remove auto margin */
 }
 
 .leadership-card:hover {
@@ -790,35 +857,34 @@ section {
   color: white;
 }
 
-/* Certification Card - Red Style */
-.certification-card {
-    background: linear-gradient(135deg, #ffeaea 0%, #ffcdd2 100%);
-    padding: 2rem;
-    border-radius: 16px;
-    display: flex;
-    gap: 2rem;
-    align-items: center;
-    box-shadow: 0 2px 8px rgba(229,57,53,0.08);
-    margin-bottom: 2rem;
+/* Add this to your CSS file to make award and certification cards display two per row */
+.experience-category {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 2rem;
 }
 
-.certification-year {
-    font-size: 1.5rem;
-    font-weight: 700;
-    color: #e53935;
-    min-width: 80px;
+.certification-card,
+.award-card {
+  flex: 1 1 45%;
+  max-width: 48%;
+  box-sizing: border-box;
+  margin-bottom: 0;
 }
 
-.certification-content h4 {
-    font-size: 1.3rem;
-    font-weight: 600;
-    margin-bottom: 0.5rem;
-    color: #b71c1c;
+/* Ensure the heading stays full width */
+.experience-category > h3 {
+  flex-basis: 100%;
+  width: 100%;
 }
 
-.certification-content p {
-    color: #7f1d1d;
-    line-height: 1.6;
+/* Responsive: stack cards on small screens */
+@media (max-width: 900px) {
+  .certification-card,
+  .award-card {
+    flex-basis: 100%;
+    max-width: 100%;
+  }
 }
 
 /* Responsive Design */
@@ -908,4 +974,51 @@ section {
   .nav-container {
     padding: 0 15px;
   }
+}
+
+/* Project Card - Green Border Style */
+.project-card {
+  background: white;
+  padding: 2rem;
+  border-radius: 16px;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+  transition: transform 0.3s ease;
+  border-left: 4px solid #10b981; /* Green border */
+  width: 100%;
+  max-width: 100%;
+  margin: 0;
+}
+
+.project-card:hover {
+  transform: translateY(-5px);
+}
+
+.project-card h4 {
+  font-size: 1.2rem;
+  font-weight: 600;
+  margin-bottom: 0.5rem;
+  color: #1f2937;
+}
+
+.project-card p {
+  color: #6b7280;
+  line-height: 1.6;
+}
+
+.project-year {
+  background: #d1fae5;
+  color: #047857;
+  padding: 0.25rem 0.75rem;
+  border-radius: 20px;
+  font-size: 0.8rem;
+  font-weight: 600;
+  display: inline-block;
+  margin-bottom: 1rem;
+}
+
+/* Project Grid - 2 columns like leadership */
+.project-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 2rem;
 }
