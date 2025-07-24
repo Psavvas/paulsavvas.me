@@ -492,7 +492,7 @@ section {
 
 /* Skills Section */
 .skills {
-  background: #f8fafc;
+  background: #ffffff;
 }
 
 .skills-grid {
@@ -748,7 +748,7 @@ section {
 
 /* Contact Section */
 .contact {
-  background: #f8fafc;
+  background: #ffffff;
 }
 
 .contact-content {
@@ -1021,4 +1021,16 @@ section {
   display: grid;
   grid-template-columns: repeat(2, 1fr);
   gap: 2rem;
+}
+
+/* Add grey background to experience and services sections */
+.experience,
+.services {
+  background: #f8fafc;
+}
+
+/* Remove grey background from skills and contact sections */
+.skills,
+.contact {
+  background: #ffffff;
 }
