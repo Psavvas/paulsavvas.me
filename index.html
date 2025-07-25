@@ -1,63 +1,463 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <title>Centered Text</title>
-  <style>
-    body {
-      display: flex;
-      justify-content: center; /* centers horizontally */
-      align-items: center;     /* centers vertically */
-      height: 100vh;           /* full viewport height */
-      margin: 0;
-    }
-    .center-container {
-      display: flex;
-      flex-direction: column; /* stack children vertically */
-      align-items: center;    /* center horizontally */
-    }
-    h1 {
-      font-family: sans-serif;
-	  font-size: 60px;
-	  color:rgb(183, 103, 6);
-	  text-align: center;
-    }
-	h2 {
-      font-family: sans-serif;
-	  font-size: 25px;
-	  text-align: center;
-    }
-	h3 {
-		font-family: sans-serif;
-		color:rgb(183, 103, 6);
-		text-align: center;
-		font-size: 25px;
-	}
-	p {
-      font-family: sans-serif;
-	  font-size: 20px;
-	  text-align: center;
-    }
-	a {
-	  font-family: sans-serif;
-	  font-size: 20px;
-	  text-decoration: none;
-	}
-  </style>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Paul Savvas</title>
+    <link rel="stylesheet" href="css/style.css">
+
+    <!-- Favicon configuration -->
+    <link rel="apple-touch-icon" sizes="180x180" href="img/favicon/apple-touch-icon.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="img/favicon/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="img/favicon/favicon-16x16.png">
+    <link rel="icon" type="image/x-icon" href="img/favicon/favicon.ico">
+    <link rel="manifest" href="site.webmanifest">
+
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
 </head>
 <body>
-  <div class="center-container">
-    <h2>www.paulsavvas.me</h2>
-    <h1>Major work is happening right now!</h1>
-    <h3>This website is a getting a complete overhaul.<br>Check back soon to see the new product.</h3>
-	<p>While waiting why not checkout my Gravatar: </p>
-	<a href="https://gravatar.com/paulsavvas">gravatar.com/paulsavvas</a>
-	<p>For any questions feel free to contact me: </p>
-	<a href="mailto:hello@paulsavvas.me">hello@paulsavvas.me</a>
+    <!-- Navigation -->
+    <nav class="navbar">
+        <div class="nav-container">
+            <div class="nav-logo" style="display: flex; align-items: center; gap: 0.75rem;">
+                <a href="index.html" style="display: flex; align-items: center; text-decoration: none; color: inherit;">
+                    <img src="img/Logo.png" alt="Logo" style="height: 32px; width: 32px; border-radius: 8px; margin-right: 0.5rem;">
+                    <h2 style="margin: 0;">Paul Savvas</h2>
+                </a>
+            </div>
+            <div class="nav-menu" id="nav-menu">
+                <a href="#about" class="nav-link">About</a>
+                <a href="#experience" class="nav-link">Experience</a>
+                <a href="#skills" class="nav-link">Skills</a>
+                <a href="#project" class="nav-link">Projects</a>
+                <a href="#contact" class="nav-link">Contact</a>
+            </div>
+            <div class="hamburger" id="hamburger">
+                <span class="bar"></span>
+                <span class="bar"></span>
+                <span class="bar"></span>
+            </div>
+        </div>
+    </nav>
 
-  </div>
-  <footer style="position: fixed; bottom: 10px; width: 100%; text-align: center; font-family: sans-serif; color: gray;">
-    &copy; 2025 Paul Savvas. All rights reserved.
-  </footer>
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="hero-content">
+            <div class="hero-text">
+                <h1 class="hero-title">👋 Hi, I'm <span class="highlight">Paul Savvas</span></h1>
+                <p class="hero-subtitle">10th Grade STEM Academy Student | Leader | Innovator</p>
+                <p class="hero-description">
+                    Passionate about learning, innovating, and pushing boundaries. I believe in perseverance,
+                    continuous learning, and maintaining an open mindset to create positive change.
+                </p>
+                <div class="hero-buttons">
+                    <a href="mailto:resume@paulsavvas.me" class="btn btn-primary">
+                        <i class="fas fa-envelope"></i> Email Me
+                    </a>
+                    <a href="https://gravatar.com/paulsavvas" class="btn btn-secondary" target="_blank">
+                        <i class="fas fa-user-circle"></i> Gravatar
+                    </a>
+                    <a href="https://www.linkedin.com/in/pauldsavvas/" class="btn btn-secondary" target="_blank">
+                        <i class="fab fa-linkedin"></i> LinkedIn
+                    </a>
+                    <a href="https://github.com/psavvas" class="btn btn-secondary" target="_blank">
+                        <i class="fab fa-github"></i> GitHub
+                    </a>
+                    <a href="https://thangs.com/designer/Paul%20S." class="btn btn-secondary" target="_blank">
+                        <i class="fas fa-cube"></i> Thangs
+                    </a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- About Section -->
+    <section id="about" class="about">
+        <div class="container">
+            <div class="section-header">
+                <h2>📕 About Me</h2>
+            </div>
+            <div class="about-content">
+                <div class="about-text">
+                    <p>
+                       I'm a 10th grader at the Great Mills High School STEM Academy, with a passion for learning, innovating, and improving.
+                       I believe that the challenges and setbacks we all face are what permits us to grow the most. From designing with CAD,
+                       programming, and inventing, I consistently challenge myself with rigorous activities and endeavors. As a straight A
+                       student at my STEM high school, I consistently demonstrate leadership through leading, motivating, helping myself and
+                        others improve. Though the ambitious projects I strive to undertake will often originally be meet with failure, I
+                        believe that such failure only paves the way to success and through resilience and an open mindset its possible for
+                        anyone, of any age to improve and grow.
+                    </p>
+                    <p>
+                        From a young age, I’ve been driven by a deep curiosity about how and why things work.
+                        As I’ve grown, that curiosity has evolved into a passion for learning, improvement,
+                        and maintaining an open mindset. Whether building a website to sharpen my programming
+                        skills or strengthening my CAD proficiency, I have and will continue to approach each
+                         challenge with grit and resilience. These skills have empowered to become an independent
+                         learner: someone who doesn’t wait for instruction, but takes initiative to explore, build,
+                          and solve. In school, I’ve pushed myself by taking advanced classes, leadership roles,
+                           and becoming a top preforming student. As I continued to grow in my academic career,
+                            I will continue to challenge myself through whatever means possible. Education isn’t
+                            something that finishes. Instead it’s a lifelong journey fueled by curiosity, and I’m just getting started.
+                    </p>
+                </div>
+                <div class="quick-stats">
+                    <div class="stat-item">
+                        <div class="stat-number">A+</div>
+                        <div class="stat-label">Student</div>
+                    </div>
+                    <div class="stat-item">
+                        <div class="stat-number">10+</div>
+                        <div class="stat-label">Leadership Roles</div>
+                    </div>
+                    <div class="stat-item">
+                        <div class="stat-number">3</div>
+                        <div class="stat-label">Languages</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Project Section -->
+    <section id="project" class="project">
+        <div class="container">
+            <div class="section-header">
+                <h2>📈 Projects</h2>
+            </div>
+            <div class="project-grid">
+                <div class="project-card">
+                    <div class="project-year">Spring 2025</div>
+                    <h4>Mole Mini</h4>
+                    <p>Mole Mini is an all-in-one chemistry computer helping with complex calculations and conversions, created by Paul Savvas & Connor Denihan in 2025.</p>
+                    <a href="project_pages/project3.html" class="btn btn-green" target="_blank" style="margin-top: 1rem; display: inline-block;">
+                        View Project ->
+                    </a>
+                </div>
+                <div class="project-card">
+                    <div class="project-year">Winter 2025</div>
+                    <h4>Notion Templates</h4>
+                    <p>Created a series of Notion templates to streamline project management, productivity, and collaboration.</p>
+                    <a href="project_pages/project2.html" class="btn btn-green" target="_blank" style="margin-top: 1rem; display: inline-block;">
+                        View Project ->
+                    </a>
+                </div>
+                <div class="project-card">
+                    <div class="project-year">Fall 2025</div>
+                    <h4>Optimizing Internal Structure of 3D Printed Constructions for Shock Absorption</h4>
+                    <p>A 1st place Science Fair project investigating how different infills could affect the shock absorption properties of different objects.</p>
+                    <a href="project_pages/project1.html" class="btn btn-green" target="_blank" style="margin-top: 1rem; display: inline-block;">
+                        View Project ->
+                    </a>
+                </div>
+                <div class="project-card">
+                    <div class="project-year">Winter 2024</div>
+                    <h4>Aircraft Cabin Redesign</h4>
+                    <p>A recreational project, aiming to redesign aircraft cabin and airline seating for improved comfort and functionality, through 3D modeling.</p>
+                    <a href="project_pages/project4.html" class="btn btn-green" target="_blank" style="margin-top: 1rem; display: inline-block;">
+                        View Project ->
+                    </a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Experience Section -->
+    <section id="experience" class="experience">
+        <div class="container">
+            <div class="section-header">
+                <h2>💼 Experience & Achievements</h2>
+            </div>
+
+            <!-- Jobs -->
+            <div class="experience-category">
+                <h3>🖊️ Professional Experience</h3>
+                <div class="timeline">
+                    <div class="timeline-item">
+                        <div class="timeline-date">Summer 2025</div>
+                        <div class="timeline-content">
+                            <h4>Wildewood Community Pool: Lifeguarding</h4>
+                            <p>Served as a Lifeguard at the Wildewood Community Pool ensuring the safety of all patrons in and around the pool environment by enforcing rules and monitoring activities. Trained to provide quick responses to emergencies, including first aid and CPR when necessary, through a Red Cross Certification. Responsibilities included educating guests on safety protocols and fostering a welcoming atmosphere. Contributed to a safe and enjoyable experience for all visitors through vigilance and effective communication.</p>
+                        </div>
+                    </div>
+                    <div class="timeline-item">
+                        <div class="timeline-date">Summer 2024</div>
+                        <div class="timeline-content">
+                            <h4>Wildewood Community Pool: Office</h4>
+                            <p>Served at the front office and snack shack of a community pool, acting as the first point of contact for members and guests. Handled customer service requests, processed transactions, maintained inventory, and managed administrative tasks related to memberships and guest check-ins. Required strong communication, multitasking, and problem-solving skills in a fast-paced environment.</p>
+                        </div>
+                    </div>
+                    <div class="timeline-item">
+                        <div class="timeline-date">2020-Ongoing</div>
+                        <div class="timeline-content">
+                            <h4>Freelancer</h4>
+                            <p>Worked with multiple clients on a range of tasks, including tech support, digital organization, and creative design projects. Provided assistance with managing technology, streamlining digital workflows, and creating visually appealing videos, flyers, and invitations tailored to each client’s needs.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Awards -->
+            <div class="experience-category">
+                <h3>🎖️ Awards & Certifications </h3>
+                <!-- Certification Card 1 -->
+                <div class="certification-card">
+                    <div class="certification-year">2025</div>
+                    <div class="certification-content">
+                        <h4>Codecademy Learn Git and Github Course</h4>
+                        <p>Completed the Codecademy Learn Git and Github course, demonstrating proficiency in version control, collaboration, and code management using Git and Github. Skills learned include: repository creation, branching, merging, and pull requests.</p>
+                    </div>
+                </div>
+                <!-- Certification Card 2 -->
+                <div class="certification-card">
+                    <div class="certification-year">2025</div>
+                    <div class="certification-content">
+                        <h4>Codecademy Learn Python 3 Course</h4>
+                        <p>Completed the Codecademy Learn Python 3 course, demonstrating proficiency in Python programming fundamentals, problem-solving, and coding best practices. Skills learned include: data types, control flow, functions, and object-oriented programming.</p>
+                    </div>
+                </div>
+                <!-- Award Card 1 -->
+                <div class="award-card">
+                    <div class="award-year">2025</div>
+                    <div class="award-content">
+                        <h4>1st Place: St. Marys County Science Fair Material Science </h4>
+                        <p>My project researching how to optimize the internal structure of 3D printed constructions received first place in its category due to its outstanding use of the scientific method and potential use cases.</p>
+                    </div>
+                </div>
+                <!-- Certification Card 3 -->
+                <div class="certification-card">
+                    <div class="certification-year">2025</div>
+                    <div class="certification-content">
+                        <h4>Red Cross Lifeguard Certification</h4>
+                        <p>Certified by the American Red Cross in Lifeguarding, First Aid, CPR, and AED. Demonstrates strong commitment to safety and emergency preparedness.</p>
+                    </div>
+                </div>
+                <!-- Award Card 2 (last, no extra margin needed) -->
+                <div class="award-card">
+                    <div class="award-year">2024</div>
+                    <div class="award-content">
+                        <h4>Maryland General Assembly Award for Excellence and Leadership</h4>
+                        <p>Received this award from Senator Brain Crosby on behalf of the Maryland General Assembly. This award was meant to represent my outstanding and excellent leadership in my middle school years at the Chesapeake Public Charter School.</p>
+                    </div>
+                </div>
+                <div class="award-card">
+                    <div class="award-year">2024</div>
+                    <div class="award-content">
+                        <h4>Maryland Seal of Biliteracy: French</h4>
+                        <p>Received this seal of biliteracy from the Maryland State Department of Education representing my proficiency in the French language.</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Leadership -->
+            <div class="experience-category">
+                <h3>🎤 Leadership Positions</h3>
+                <div class="leadership-grid">
+                    <div class="leadership-card">
+                        <h4>GMHS Student Government Association</h4>
+                        <span class="period">2024-Ongoing</span>
+                        <p>Help organize school-wide activities such as Homecoming week, school celebrations, fundraisers, and events.</p>
+                    </div>
+                    <div class="leadership-card">
+                        <h4>GMHS Mini-Thon Club</h4>
+                        <span class="period">2024-Ongoing</span>
+                        <p>Member helping to raise money for pediatric cancer research through various fundraisers.</p>
+                    </div>
+                    <div class="leadership-card">
+                        <h4>CPCS SGA President</h4>
+                        <span class="period">2023-2024</span>
+                        <p>Led the association to raise funds, organize whole school events, and solidify its foundation.</p>
+                    </div>
+                    <div class="leadership-card">
+                        <h4>CPCS Student Leadership Committee</h4>
+                        <span class="period">2021-2023</span>
+                        <p>Worked on various projects to improve the overall school climate and organize whole school events.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Skills Section -->
+    <section id="skills" class="skills">
+        <div class="container">
+            <div class="section-header">
+                <h2>🔨 Expertise & Skills</h2>
+            </div>
+            <div class="skills-grid">
+                <div class="skill-card">
+                    <div class="skill-icon">⏰</div>
+                    <h3>Time & Project Management</h3>
+                    <p>Expert at managing complex projects with high stakes in a timely and organized manner.</p>
+                </div>
+                <div class="skill-card">
+                    <div class="skill-icon">👥</div>
+                    <h3>Leadership</h3>
+                    <p>Natural leader who can take initiative to guide others toward shared goals and visions.</p>
+                </div>
+                <div class="skill-card">
+                    <div class="skill-icon">🌍</div>
+                    <h3>Languages</h3>
+                    <p>Native French and English speaker with Maryland Seal of Biliteracy. Also speaks Spanish.</p>
+                </div>
+                <div class="skill-card">
+                    <div class="skill-icon">⚙️</div>
+                    <h3>Engineering</h3>
+                    <p>Passionate about the design method - designing, testing, and improving practical solutions.</p>
+                </div>
+                <div class="skill-card">
+                    <div class="skill-icon">💻</div>
+                    <h3>Technology</h3>
+                    <p>Expert troubleshooter for IT issues across iOS, Android, Windows, and MacOS platforms.</p>
+                </div>
+                <div class="skill-card">
+                    <div class="skill-icon">🎨</div>
+                    <h3>Design & Development</h3>
+                    <p>Proficient in CAD design, 3D printing, coding (HTML, Python, C++), and digital media creation.</p>
+                </div>
+            </div>
+
+            <!-- Technical Skills -->
+            <div class="tech-skills">
+                <div class="tech-category">
+                    <h4>Design Tools</h4>
+                    <div class="tech-tags">
+                        <span class="tech-tag">Affinity Suite</span>
+                        <span class="tech-tag">Canva</span>
+                        <span class="tech-tag">FreeCAD</span>
+                        <span class="tech-tag">Fusion 360</span>
+                        <span class="tech-tag">SolidWorks</span>
+                        <span class="tech-tag">iMovie</span>
+                    </div>
+                </div>
+                <div class="tech-category">
+                    <h4>Programming</h4>
+                    <div class="tech-tags">
+                        <span class="tech-tag">HTML</span>
+                        <span class="tech-tag">Python</span>
+                        <span class="tech-tag">C++</span>
+                        <span class="tech-tag">Java</span>
+                        <span class="tech-tag">GitHub</span>
+                        <span class="tech-tag">GitLab</span>
+                        <span class="tech-tag">Git</span>
+                    </div>
+                </div>
+                <div class="tech-category">
+                    <h4>Productivity</h4>
+                    <div class="tech-tags">
+                        <span class="tech-tag">Notion</span>
+                        <span class="tech-tag">Todoist</span>
+                        <span class="tech-tag">Zapier</span>
+                        <span class="tech-tag">Google Workspace</span>
+                        <span class="tech-tag">Microsoft 365</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Services Section -->
+    <section class="services">
+        <div class="container">
+            <div class="section-header">
+                <h2>🤝 Services</h2>
+            </div>
+            <div class="services-content">
+                <p class="services-intro">
+                    I'm always ready and available to help. I can offer a wide range of services from online to
+                    in-person including but not limited to IT troubleshooting, GTD organization, graphic design,
+                    content creation, and POS setup. I always exceed customer expectations offering high quality,
+                    professional, and timely results.
+                </p>
+                <div class="services-grid">
+                    <div class="service-card">
+                        <i class="fas fa-laptop-code"></i>
+                        <h4>IT Troubleshooting</h4>
+                    </div>
+                    <div class="service-card">
+                        <i class="fas fa-tasks"></i>
+                        <h4>GTD Organization</h4>
+                    </div>
+                    <div class="service-card">
+                        <i class="fas fa-palette"></i>
+                        <h4>Graphic Design</h4>
+                    </div>
+                    <div class="service-card">
+                        <i class="fas fa-video"></i>
+                        <h4>Content Creation</h4>
+                    </div>
+                    <div class="service-card">
+                        <i class="fas fa-cash-register"></i>
+                        <h4>POS Setup</h4>
+                    </div>
+                    <div class="service-card">
+                        <i class="fas fa-code"></i>
+                        <h4>Programming</h4>
+                    </div>
+                    <div class="service-card">
+                        <i class="fas fa-cube"></i>
+                        <h4>3D Design</h4>
+                    </div>
+                    <div class="service-card">
+                        <i class="fas fa-ellipsis-h"></i>
+                        <h4>And More...</h4>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contact" class="contact">
+        <div class="container">
+            <div class="section-header">
+                <h2>✉️ Get In Touch</h2>
+                <p>I'd love to hear from you! Whether you have a question or just want to say hi, feel free to reach out.</p>
+            </div>
+            <div class="contact-content" style="display: flex; flex-direction: row; gap: 2rem;">
+                <div class="contact-info" style="width: 50%;">
+                    <div class="contact-item" style="width: 100%; box-sizing: border-box;">
+                        <i class="fas fa-envelope"></i>
+                        <div>
+                            <h4>Email</h4>
+                            <a href="mailto:resume@paulsavvas.me">resume@paulsavvas.me</a>
+                            <p>I try to respond within three business days</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="contact-info" style="width: 50%;">
+                    <div class="contact-item" style="width: 100%; box-sizing: border-box;">
+                        <i class="fas fa-file-alt"></i> <!-- Changed icon to form/document -->
+                        <div>
+                            <h4>Contact Form</h4>
+                            <a href="https://tinyurl.com/Psavvas-contact" target="_blank">www.tinyurl.com/psavvas-contact</a>
+                            <p>I check for responses daily and respond promptly</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-text">
+                    <p>&copy; 2025 Paul Savvas.</p>
+                </div>
+                <div class="footer-links">
+                    <a href="mailto:resume@paulsavvas.me"><i class="fas fa-envelope"></i></a>
+                    <a href="https://gravatar.com/paulsavvas" target="_blank"><i class="fas fa-user-circle"></i></a>
+                    <a href="https://www.linkedin.com/in/pauldsavvas/" target="_blank"><i class="fab fa-linkedin"></i></a>
+                    <a href="https://github.com/psavvas" target="_blank"><i class="fab fa-github"></i></a>
+                    <a href="https://thangs.com/designer/Paul%20S." target="_blank"><i class="fas fa-cube"></i></a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script src="js/app.js"></script>
 </body>
 </html>
