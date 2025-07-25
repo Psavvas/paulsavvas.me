@@ -5,3 +5,5 @@ node_modules
 dist
 .cache
 .idea
+img/.DS_Store
+.DS_Store
