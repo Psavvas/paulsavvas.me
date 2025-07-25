@@ -139,9 +139,3 @@ document.querySelectorAll('.btn, .social-link, .tech-tag').forEach(element => {
     });
 });
 
-// Dynamic year update in footer
-const currentYear = new Date().getFullYear();
-const copyrightElement = document.querySelector('.footer-text p');
-if (copyrightElement) {
-    copyrightElement.textContent = `© ${currentYear} Paul Savvas. All rights reserved.`;
-}
