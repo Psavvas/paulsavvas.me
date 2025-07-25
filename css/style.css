@@ -900,24 +900,46 @@ section {
     transition: 0.3s;
     box-shadow: 0 10px 27px rgba(0, 0, 0, 0.05);
     padding: 2rem 0;
+    z-index: 1000; /* Ensure menu appears above other content */
   }
 
   .nav-menu.active {
     left: 0;
   }
 
+  .hero-content {
+    padding: 120px 20px 60px; /* Add more padding on top to account for fixed navbar */
+    width: 100%;
+    max-width: 100%;
+    margin: 0 auto;
+  }
+
+  .hero-text {
+    width: 100%;
+    max-width: 100%;
+  }
+
   .hero-title {
     font-size: 2.5rem;
+    word-break: break-word; /* Prevent overflow of text */
+    line-height: 1.2; /* Improve line spacing */
+  }
+
+  .hero-subtitle {
+    font-size: 1rem;
+    line-height: 1.5;
   }
 
   .hero-buttons {
     flex-direction: column;
     align-items: center;
     gap: 0.75rem;
+    width: 100%;
   }
 
   .hero-buttons .btn {
-    width: 200px;
+    width: 100%;
+    max-width: 250px;
     justify-content: center;
   }
 
@@ -927,8 +949,12 @@ section {
   }
 
   .contact-content {
-    grid-template-columns: 1fr;
+    flex-direction: column !important;
     gap: 2rem;
+  }
+
+  .contact-info {
+    width: 100% !important;
   }
 
   .footer-content {
@@ -952,6 +978,13 @@ section {
     flex-direction: column;
     text-align: center;
   }
+
+  /* Ensure project cards stack properly */
+  .project-grid {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 2rem;
+  }
 }
 
 @media (max-width: 480px) {
@@ -960,15 +993,31 @@ section {
   }
 
   .hero-title {
-    font-size: 2rem;
+    font-size: 1.8rem;
   }
 
   .section-header h2 {
-    font-size: 2rem;
+    font-size: 1.8rem;
+    word-break: break-word;
   }
 
   .nav-container {
     padding: 0 15px;
+  }
+
+  /* Smaller font sizes for better mobile readability */
+  p, .hero-description {
+    font-size: 0.95rem;
+  }
+
+  /* Better touch targets for mobile */
+  .btn, .nav-link {
+    padding: 0.8rem 1.2rem;
+  }
+
+  /* Ensure stats display well on mobile */
+  .quick-stats {
+    grid-template-columns: 1fr;
   }
 }
 
