@@ -4,7 +4,9 @@
     "description": "A webpack-based project setup",
     "private": true,
     "keywords": [
-        ""
+        "webpack",
+        "project",
+        "setup"
     ],
     "license": "MIT",
     "author": "Paul Savvas",
