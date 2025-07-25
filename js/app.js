@@ -49,11 +49,24 @@ if (contactForm) {
 
         // Get form data
         const formData = new FormData(this);
-        const name = formData.get('name') || this.querySelector('#name-field').value;
-        const email = formData.get('email') || this.querySelector('input[type="email"]').value;
-        const subject = formData.get('subject') || this.querySelector('#subject-field').value;
-        const message = formData.get('message') || this.querySelector('textarea').value;
+        const name = formData.get('name') || this.querySelector('#name-field').value.trim();
+        const email = formData.get('email') || this.querySelector('input[type="email"]').value.trim();
+        const subject = formData.get('subject') || this.querySelector('#subject-field').value.trim();
+        const message = formData.get('message') || this.querySelector('textarea').value.trim();
 
+        // Validate inputs
+        if (!validateEmail(email)) {
+            alert('Please enter a valid email address.');
+            return;
+        }
+        if (subject.length > 100) {
+            alert('Subject must be 100 characters or less.');
+            return;
+        }
+        if (message.length > 1000) {
+            alert('Message must be 1000 characters or less.');
+            return;
+        }
         // Create mailto link
         const mailtoLink = `mailto:resume@paulsavvas.me?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(`Name: ${name}\nEmail: ${email}\n\nMessage:\n${message}`)}`;
 
