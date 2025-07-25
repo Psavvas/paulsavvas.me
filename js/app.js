@@ -49,9 +49,9 @@ if (contactForm) {
 
         // Get form data
         const formData = new FormData(this);
-        const name = formData.get('name') || this.querySelector('input[type="text"]').value;
+        const name = formData.get('name') || this.querySelector('#name-field').value;
         const email = formData.get('email') || this.querySelector('input[type="email"]').value;
-        const subject = formData.get('subject') || this.querySelectorAll('input[type="text"]')[1].value;
+        const subject = formData.get('subject') || this.querySelector('#subject-field').value;
         const message = formData.get('message') || this.querySelector('textarea').value;
 
         // Create mailto link
