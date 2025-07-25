@@ -311,14 +311,10 @@ section {
 /* Experience Section */
 .experience-category {
   margin-bottom: 60px;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 2rem;
 }
-
-.experience-category {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 2rem;
-}
-
 .experience-category h3 {
   font-size: 1.8rem;
   font-weight: 600;
