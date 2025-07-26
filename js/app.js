@@ -122,9 +122,12 @@ function typeWriter(element, text, speed = 100) {
 
     function type() {
         if (i < text.length) {
-            element.innerHTML += text.charAt(i);
+            element.innerHTML = text.substring(0, i + 1);
             i++;
             setTimeout(type, speed);
+        } else {
+            // After typing is complete, add the highlight span
+            element.innerHTML = '👋 Hi, I\'m <span class="highlight">Paul Savvas</span>';
         }
     }
     type();
@@ -134,7 +137,8 @@ function typeWriter(element, text, speed = 100) {
 window.addEventListener('load', () => {
     const heroTitle = document.querySelector('.hero-title');
     if (heroTitle) {
-        const originalText = heroTitle.textContent;
+        // Use a fixed text string that won't be affected by minification
+        const originalText = '👋 Hi, I\'m Paul Savvas';
         setTimeout(() => {
             typeWriter(heroTitle, originalText, 50);
         }, 500);
