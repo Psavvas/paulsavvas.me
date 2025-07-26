@@ -1,12 +1,13 @@
 {
-    "name": " ",
+    "name": "paulsavvas-website",
     "version": "0.0.1",
-    "description": "A webpack-based project setup",
+    "description": "Paul Savvas's personal portfolio website",
     "private": true,
     "keywords": [
-        "webpack",
-        "project",
-        "setup"
+        "portfolio",
+        "personal-website",
+        "resume",
+        "paul-savvas"
     ],
     "license": "MIT",
     "author": "Paul Savvas",
