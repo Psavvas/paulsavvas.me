@@ -53,7 +53,7 @@ const watchPaths = ['js', 'css', 'index.html', 'project_pages'];
 
 watchPaths.forEach(path => {
   try {
-    const watcher = watch(path, { recursive: true }, (eventType, filename) => {
+    watch(path, { recursive: true }, (eventType, filename) => {
       if (filename) {
         console.log(`📝 File changed: ${path}/${filename}`);
         console.log('   Refresh your browser to see changes');
