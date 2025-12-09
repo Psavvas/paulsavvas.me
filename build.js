@@ -28,10 +28,11 @@ console.log('✅ JavaScript bundled');
 console.log('📋 Copying static files...');
 const filesToCopy = [
   { from: 'index.html', to: 'index.html' },
-  { from: 'InfantGuard.html', to: 'InfantGuard.html' },
+  { from: 'infantguard.html', to: 'infantguard.html' },
   { from: '404.html', to: '404.html' },
   { from: 'robots.txt', to: 'robots.txt' },
   { from: 'site.webmanifest', to: 'site.webmanifest' },
+  { from: '.nojekyll', to: '.nojekyll' },
   { from: 'CNAME', to: 'CNAME' },
   { from: 'css', to: 'css' },
   { from: 'img', to: 'img' },
