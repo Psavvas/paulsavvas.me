@@ -99,7 +99,10 @@ To add a new redirect:
     </script>
   </head>
   <body>
-    <p>If you are not redirected, <a href="/redirect.html?to=newredirect">click here</a>.</p>
+    <p>
+      If you are not redirected,
+      <a href="/redirect.html?to=newredirect">click here</a>.
+    </p>
   </body>
 </html>
 ```

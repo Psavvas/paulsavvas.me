@@ -56,16 +56,10 @@
     <script type="module">
       async function redirect() {
         try {
-          // Get the path from URL (e.g., /redirect.html?to=infantguard or /infantguard)
+          // Get the redirect key from URL query parameter
+          // Example: /redirect.html?to=infantguard
           const urlParams = new URLSearchParams(window.location.search);
           let redirectKey = urlParams.get('to');
-
-          // If no 'to' parameter, try to get it from the pathname
-          if (!redirectKey) {
-            const path = window.location.pathname;
-            // Extract key from paths like /infantguard or /infantguard.html
-            redirectKey = path.split('/').pop().replace('.html', '');
-          }
 
           if (!redirectKey) {
             throw new Error('No redirect key specified');
@@ -74,9 +68,23 @@
           // Normalize redirect key to lowercase for case-insensitive matching
           redirectKey = redirectKey.toLowerCase();
 
-          // Fetch redirects configuration
-          const response = await fetch('/redirects.json');
-          const redirects = await response.json();
+          // Fetch redirects configuration with error handling
+          let response;
+          let redirects;
+
+          try {
+            response = await fetch('/redirects.json');
+            if (!response.ok) {
+              throw new Error(
+                `Failed to load redirects configuration (HTTP ${response.status})`
+              );
+            }
+            redirects = await response.json();
+          } catch (fetchError) {
+            throw new Error(
+              `Unable to load redirect configuration: ${fetchError.message}`
+            );
+          }
 
           const targetUrl = redirects[redirectKey];
 
