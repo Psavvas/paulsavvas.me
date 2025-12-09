@@ -139,7 +139,3 @@ This project uses GitHub Actions for continuous integration and deployment:
   - Builds the production bundle
   - Deploys to GitHub Pages
   - Includes build verification checks
-
-## License
-
-MIT License - see LICENSE.txt for details
