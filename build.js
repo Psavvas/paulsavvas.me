@@ -28,6 +28,7 @@ console.log('✅ JavaScript bundled');
 console.log('📋 Copying static files...');
 const filesToCopy = [
   { from: 'index.html', to: 'index.html' },
+  { from: 'InfantGuard.html', to: 'InfantGuard.html' },
   { from: '404.html', to: '404.html' },
   { from: 'robots.txt', to: 'robots.txt' },
   { from: 'site.webmanifest', to: 'site.webmanifest' },
