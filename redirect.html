@@ -1,0 +1,115 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Redirecting...</title>
+    <style>
+      body {
+        font-family:
+          'Inter',
+          -apple-system,
+          BlinkMacSystemFont,
+          'Segoe UI',
+          sans-serif;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        min-height: 100vh;
+        margin: 0;
+        background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+        color: white;
+      }
+      .container {
+        text-align: center;
+        padding: 2rem;
+        background: rgba(255, 255, 255, 0.1);
+        border-radius: 16px;
+        backdrop-filter: blur(10px);
+        box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
+      }
+      .spinner {
+        border: 4px solid rgba(255, 255, 255, 0.3);
+        border-top: 4px solid white;
+        border-radius: 50%;
+        width: 40px;
+        height: 40px;
+        animation: spin 1s linear infinite;
+        margin: 0 auto 1rem;
+      }
+      @keyframes spin {
+        0% {
+          transform: rotate(0deg);
+        }
+        100% {
+          transform: rotate(360deg);
+        }
+      }
+      a {
+        color: white;
+        text-decoration: underline;
+      }
+      .error {
+        color: #ffcccc;
+      }
+    </style>
+    <script type="module">
+      async function redirect() {
+        try {
+          // Get the path from URL (e.g., /redirect.html?to=infantguard or /infantguard)
+          const urlParams = new URLSearchParams(window.location.search);
+          let redirectKey = urlParams.get('to');
+
+          // If no 'to' parameter, try to get it from the pathname
+          if (!redirectKey) {
+            const path = window.location.pathname;
+            // Extract key from paths like /infantguard or /infantguard.html
+            redirectKey = path.split('/').pop().replace('.html', '');
+          }
+
+          if (!redirectKey) {
+            throw new Error('No redirect key specified');
+          }
+
+          // Normalize redirect key to lowercase for case-insensitive matching
+          redirectKey = redirectKey.toLowerCase();
+
+          // Fetch redirects configuration
+          const response = await fetch('/redirects.json');
+          const redirects = await response.json();
+
+          const targetUrl = redirects[redirectKey];
+
+          if (!targetUrl) {
+            throw new Error(`No redirect found for: ${redirectKey}`);
+          }
+
+          // Redirect to target URL
+          window.location.href = targetUrl;
+        } catch (error) {
+          console.error('Redirect error:', error);
+          document.getElementById('loading').style.display = 'none';
+          document.getElementById('error').style.display = 'block';
+          document.getElementById('errorMessage').textContent = error.message;
+        }
+      }
+
+      // Start redirect when page loads
+      redirect();
+    </script>
+  </head>
+  <body>
+    <div class="container">
+      <div id="loading">
+        <div class="spinner"></div>
+        <h2>Redirecting...</h2>
+        <p>Please wait while we redirect you.</p>
+      </div>
+      <div id="error" style="display: none">
+        <h2 class="error">Redirect Error</h2>
+        <p id="errorMessage"></p>
+        <p><a href="/">Return to homepage</a></p>
+      </div>
+    </div>
+  </body>
+</html>

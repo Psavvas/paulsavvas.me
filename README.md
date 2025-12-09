@@ -61,12 +61,50 @@ bun run format
 │   ├── app.js       # Main application file
 │   └── vendor/      # Third-party libraries
 ├── img/             # Images and favicon
-├── project_pages/   # Project detail pages
+├── project/         # Project detail pages
 ├── index.html       # Main page
 ├── 404.html         # 404 error page
+├── redirect.html    # Generic redirect handler
+├── redirects.json   # Redirect configuration
 ├── build.js         # Production build script
 └── dev-server.js    # Development server script
 ```
+
+## Redirect System
+
+This project uses a centralized redirect system instead of individual redirect HTML files.
+
+To add a new redirect:
+
+1. Add an entry to `redirects.json`:
+
+```json
+{
+  "infantguard": "https://drive.proton.me/urls/GTHB40AV9M#bUy6nRmkFvVw",
+  "newredirect": "https://example.com"
+}
+```
+
+2. Create a simple HTML file (e.g., `newredirect.html`):
+
+```html
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="refresh" content="0; url=/redirect.html?to=newredirect" />
+    <title>Redirecting...</title>
+    <script>
+      window.location.href = '/redirect.html?to=newredirect';
+    </script>
+  </head>
+  <body>
+    <p>If you are not redirected, <a href="/redirect.html?to=newredirect">click here</a>.</p>
+  </body>
+</html>
+```
+
+**Note:** All redirects are case-insensitive (e.g., `/InfantGuard`, `/infantguard`, and `/INFANTGUARD` all work).
 
 ## Migration Notes
 

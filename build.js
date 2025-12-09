@@ -28,6 +28,8 @@ console.log('✅ JavaScript bundled');
 console.log('📋 Copying static files...');
 const filesToCopy = [
   { from: 'index.html', to: 'index.html' },
+  { from: 'redirect.html', to: 'redirect.html' },
+  { from: 'redirects.json', to: 'redirects.json' },
   { from: 'infantguard.html', to: 'infantguard.html' },
   { from: '404.html', to: '404.html' },
   { from: 'robots.txt', to: 'robots.txt' },
@@ -37,7 +39,7 @@ const filesToCopy = [
   { from: 'css', to: 'css' },
   { from: 'img', to: 'img' },
   { from: 'js/vendor', to: 'js/vendor' },
-  { from: 'project_pages', to: 'project_pages' },
+  { from: 'project', to: 'project' },
 ];
 
 for (const { from, to } of filesToCopy) {
