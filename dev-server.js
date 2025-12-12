@@ -49,7 +49,7 @@ const server = Bun.serve({
 });
 
 // Watch for file changes
-const watchPaths = ['js', 'css', 'index.html', 'project_pages'];
+const watchPaths = ['js', 'css', 'index.html', 'project'];
 
 watchPaths.forEach(path => {
   try {
