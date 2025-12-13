@@ -13,13 +13,16 @@
   "author": "Paul Savvas",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "bun run dev-server.js",
-    "dev": "bun run dev-server.js",
-    "build": "bun run build.js",
+    "start": "bun run dev-server.ts",
+    "dev": "bun run dev-server.ts",
+    "build": "bun run build.ts",
     "format": "prettier --write .",
-    "format:check": "prettier --check ."
+    "format:check": "prettier --check .",
+    "typecheck": "tsc --noEmit"
   },
   "devDependencies": {
-    "prettier": "3.7.4"
+    "@types/bun": "^1.1.14",
+    "prettier": "3.7.4",
+    "typescript": "^5.7.2"
   }
 }

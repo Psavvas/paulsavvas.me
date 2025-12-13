@@ -4,6 +4,11 @@ import { join } from 'path';
 
 const DIST_DIR = 'dist';
 
+interface FileToCopy {
+  from: string;
+  to: string;
+}
+
 // Clean dist directory
 if (existsSync(DIST_DIR)) {
   console.log('🧹 Cleaning dist directory...');
@@ -17,7 +22,7 @@ console.log('📁 Created dist directory');
 // Bundle JavaScript with Bun
 console.log('📦 Bundling JavaScript...');
 await Bun.build({
-  entrypoints: ['./js/app.js'],
+  entrypoints: ['./js/app.ts'],
   outdir: './dist/js',
   minify: true,
   sourcemap: 'external',
@@ -26,7 +31,7 @@ console.log('✅ JavaScript bundled');
 
 // Copy static files
 console.log('📋 Copying static files...');
-const filesToCopy = [
+const filesToCopy: FileToCopy[] = [
   { from: 'index.html', to: 'index.html' },
   { from: 'redirect.html', to: 'redirect.html' },
   { from: 'redirects.json', to: 'redirects.json' },

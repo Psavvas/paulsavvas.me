@@ -1,4 +1,36 @@
-const projects = [
+interface Project {
+  title: string;
+  time: string;
+  summary: string;
+  link: string;
+  tags: string[];
+}
+
+interface Signal {
+  label: string;
+  value: string;
+}
+
+interface Capability {
+  title: string;
+  body: string;
+  items: string[];
+}
+
+interface TimelineItem {
+  time: string;
+  title: string;
+  detail: string;
+}
+
+interface Contact {
+  title: string;
+  body: string;
+  link: string;
+  cta: string;
+}
+
+const projects: Project[] = [
   {
     title: 'Mole Mini',
     time: 'Spring 2025',
@@ -33,10 +65,11 @@ const projects = [
   },
 ];
 
-const signals = [
+const signals: Signal[] = [
   {
     label: 'Current focus',
-    value: 'Building practical tools and systems that help the world work better.',
+    value:
+      'Building practical tools and systems that help the world work better.',
   },
   {
     label: 'Leadership',
@@ -55,7 +88,7 @@ const signals = [
   },
 ];
 
-const capabilities = [
+const capabilities: Capability[] = [
   {
     title: 'Systems and clarity',
     body: 'Translate fuzzy notes into structured maps, then simplify until the signal is obvious.',
@@ -78,7 +111,7 @@ const capabilities = [
   },
 ];
 
-const timeline = [
+const timeline: TimelineItem[] = [
   {
     time: '2025',
     title: 'Mole Mini shipped',
@@ -105,7 +138,7 @@ const timeline = [
   },
 ];
 
-const contacts = [
+const contacts: Contact[] = [
   {
     title: 'Email',
     body: 'Straight to my inbox. I reply within a few days.',
@@ -132,23 +165,33 @@ const contacts = [
   },
 ];
 
-const prefersReducedMotion = window.matchMedia(
+const prefersReducedMotion: boolean = window.matchMedia(
   '(prefers-reduced-motion: reduce)'
 ).matches;
 
-const qs = (sel, parent = document) => parent.querySelector(sel);
-const qsa = (sel, parent = document) =>
-  Array.from(parent.querySelectorAll(sel));
+const qs = <T extends Element = Element>(
+  sel: string,
+  parent: Document | Element = document
+): T | null => parent.querySelector<T>(sel);
 
-const create = (tag, className, content) => {
+const qsa = <T extends Element = Element>(
+  sel: string,
+  parent: Document | Element = document
+): T[] => Array.from(parent.querySelectorAll<T>(sel));
+
+const create = <K extends keyof HTMLElementTagNameMap>(
+  tag: K,
+  className?: string,
+  content?: string
+): HTMLElementTagNameMap[K] => {
   const el = document.createElement(tag);
   if (className) el.className = className;
   if (content) el.textContent = content;
   return el;
 };
 
-const renderSignals = () => {
-  const rail = qs('#signal-rail');
+const renderSignals = (): void => {
+  const rail = qs<HTMLElement>('#signal-rail');
   if (!rail) return;
   signals.forEach(item => {
     const card = create('div', 'signal-card');
@@ -158,16 +201,16 @@ const renderSignals = () => {
   });
 };
 
-const renderProjects = () => {
-  const grid = qs('#projects');
+const renderProjects = (): void => {
+  const grid = qs<HTMLElement>('#projects');
   if (!grid) return;
   projects.forEach(project => {
     const card = create('article', 'card project-card');
     card.setAttribute('data-reveal', '');
 
     card.append(create('p', 'time', project.time));
-    card.append(create('h3', null, project.title));
-    card.append(create('p', null, project.summary));
+    card.append(create('h3', undefined, project.title));
+    card.append(create('p', undefined, project.summary));
 
     const tagRow = create('div', 'tag-row');
     project.tags.forEach(tag => tagRow.append(create('span', 'tag', tag)));
@@ -175,73 +218,73 @@ const renderProjects = () => {
 
     const link = create('div', 'link-row');
     link.innerHTML = '<span>Open</span><strong>↗</strong>';
-    link.addEventListener('click', () => window.location.href = project.link);
+    link.addEventListener('click', () => (window.location.href = project.link));
     card.append(link);
 
     grid.append(card);
   });
 };
 
-const renderCapabilities = () => {
-  const grid = qs('#capability-grid');
+const renderCapabilities = (): void => {
+  const grid = qs<HTMLElement>('#capability-grid');
   if (!grid) return;
   capabilities.forEach(cap => {
     const card = create('article', 'card capability-card');
     card.setAttribute('data-reveal', '');
-    card.append(create('h3', null, cap.title));
-    card.append(create('p', null, cap.body));
+    card.append(create('h3', undefined, cap.title));
+    card.append(create('p', undefined, cap.body));
 
     const list = create('ul');
-    cap.items.forEach(item => list.append(create('li', null, item)));
+    cap.items.forEach(item => list.append(create('li', undefined, item)));
     card.append(list);
     grid.append(card);
   });
 };
 
-const renderTimeline = () => {
-  const list = qs('#timeline-list');
+const renderTimeline = (): void => {
+  const list = qs<HTMLElement>('#timeline-list');
   if (!list) return;
   timeline.forEach(item => {
     const node = create('article', 'timeline-item');
     node.setAttribute('data-reveal', '');
     node.append(create('p', 'time', item.time));
-    node.append(create('h3', null, item.title));
-    node.append(create('p', null, item.detail));
+    node.append(create('h3', undefined, item.title));
+    node.append(create('p', undefined, item.detail));
     list.append(node);
   });
 };
 
-const renderContacts = () => {
-  const grid = qs('#contact-grid');
+const renderContacts = (): void => {
+  const grid = qs<HTMLElement>('#contact-grid');
   if (!grid) return;
   contacts.forEach(contact => {
     const card = create('article', 'card contact-card');
     card.setAttribute('data-reveal', '');
     card.style.cursor = 'pointer';
-    card.append(create('h3', null, contact.title));
-    card.append(create('p', null, contact.body));
+    card.append(create('h3', undefined, contact.title));
+    card.append(create('p', undefined, contact.body));
     const ctaRow = create('div', 'cta-row');
-    const link = create('a', null, contact.cta);
+    const link = create('a', undefined, contact.cta);
     link.innerHTML = `${contact.cta} <strong>→</strong>`;
     link.href = contact.link;
     link.target = contact.link.startsWith('http') ? '_blank' : '_self';
     link.rel = 'noreferrer';
     ctaRow.append(link);
     card.append(ctaRow);
-    
-    card.addEventListener('click', (e) => {
-      if (e.target !== link && !e.target.closest('a')) {
+
+    card.addEventListener('click', (e: MouseEvent) => {
+      if (e.target !== link && !(e.target as Element).closest('a')) {
         link.click();
       }
     });
-    
+
     grid.append(card);
   });
 };
 
-const setupNav = () => {
-  const nav = qs('[data-nav]');
-  const toggle = qs('[data-nav-toggle]');
+const setupNav = (): void => {
+  const nav = qs<HTMLElement>('[data-nav]');
+  const toggle = qs<HTMLButtonElement>('[data-nav-toggle]');
   if (!nav || !toggle) return;
 
   toggle.addEventListener('click', () => {
@@ -250,7 +293,7 @@ const setupNav = () => {
     toggle.setAttribute('aria-expanded', (!isOpen).toString());
   });
 
-  qsa('.nav-link').forEach(link => {
+  qsa<HTMLAnchorElement>('.nav-link').forEach(link => {
     link.addEventListener('click', () => {
       nav.dataset.open = 'false';
       toggle.setAttribute('aria-expanded', 'false');
@@ -258,7 +301,7 @@ const setupNav = () => {
   });
 };
 
-const setupReveal = () => {
+const setupReveal = (): void => {
   const observer = new IntersectionObserver(
     entries => {
       entries.forEach(entry => {
@@ -271,24 +314,24 @@ const setupReveal = () => {
     { threshold: 0.15 }
   );
 
-  qsa('[data-reveal]').forEach((el, idx) => {
+  qsa<HTMLElement>('[data-reveal]').forEach((el, idx) => {
     el.style.transitionDelay = `${idx * 40}ms`;
     observer.observe(el);
   });
 };
 
-const setupTheme = () => {
-  const toggle = qs('[data-theme-toggle]');
+const setupTheme = (): void => {
+  const toggle = qs<HTMLButtonElement>('[data-theme-toggle]');
   const root = document.body;
   if (!toggle) return;
 
-  const getPreferred = () =>
+  const getPreferred = (): string =>
     localStorage.getItem('ps-theme') ||
     (window.matchMedia('(prefers-color-scheme: light)').matches
       ? 'light'
       : 'dark');
 
-  const apply = mode => {
+  const apply = (mode: string): void => {
     root.dataset.theme = mode;
     localStorage.setItem('ps-theme', mode);
   };
@@ -301,37 +344,37 @@ const setupTheme = () => {
   });
 };
 
-const setupContactModal = () => {
-  const triggers = qsa('[data-contact-modal]');
-  const backdrop = qs('[data-contact-modal-backdrop]');
-  const closeBtn = qs('[data-contact-modal-close]');
+const setupContactModal = (): void => {
+  const triggers = qsa<HTMLElement>('[data-contact-modal]');
+  const backdrop = qs<HTMLElement>('[data-contact-modal-backdrop]');
+  const closeBtn = qs<HTMLButtonElement>('[data-contact-modal-close]');
   if (!backdrop || triggers.length === 0) return;
 
-  const open = () => backdrop.removeAttribute('hidden');
-  const close = () => backdrop.setAttribute('hidden', '');
+  const open = (): void => backdrop.removeAttribute('hidden');
+  const close = (): void => backdrop.setAttribute('hidden', '');
 
   triggers.forEach(t =>
-    t.addEventListener('click', e => {
+    t.addEventListener('click', (e: Event) => {
       e.preventDefault();
       open();
     })
   );
 
-  backdrop.addEventListener('click', e => {
+  backdrop.addEventListener('click', (e: MouseEvent) => {
     if (e.target === backdrop) close();
   });
 
   if (closeBtn) closeBtn.addEventListener('click', close);
 
-  window.addEventListener('keydown', e => {
+  window.addEventListener('keydown', (e: KeyboardEvent) => {
     if (e.key === 'Escape' && !backdrop.hasAttribute('hidden')) close();
   });
 };
 
-const setupProgress = () => {
-  const bar = qs('#scroll-progress');
+const setupProgress = (): void => {
+  const bar = qs<HTMLElement>('#scroll-progress');
   if (!bar) return;
-  const update = () => {
+  const update = (): void => {
     const scroll = window.scrollY;
     const height = document.documentElement.scrollHeight - window.innerHeight;
     const progress = height > 0 ? (scroll / height) * 100 : 0;
@@ -342,11 +385,11 @@ const setupProgress = () => {
   window.addEventListener('resize', update);
 };
 
-const setupMagneticButtons = () => {
+const setupMagneticButtons = (): void => {
   if (prefersReducedMotion) return;
   const strength = 10;
-  qsa('.button').forEach(btn => {
-    btn.addEventListener('pointermove', e => {
+  qsa<HTMLElement>('.button').forEach(btn => {
+    btn.addEventListener('pointermove', (e: PointerEvent) => {
       const rect = btn.getBoundingClientRect();
       const x = ((e.clientX - rect.left) / rect.width - 0.5) * strength;
       const y = ((e.clientY - rect.top) / rect.height - 0.5) * strength;
@@ -359,7 +402,7 @@ const setupMagneticButtons = () => {
   });
 };
 
-const init = () => {
+const init = (): void => {
   renderSignals();
   renderProjects();
   renderCapabilities();

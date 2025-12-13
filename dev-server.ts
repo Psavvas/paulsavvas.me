@@ -12,7 +12,7 @@ console.log('👀 Watching for file changes...\n');
 // Create a simple HTTP server using Bun
 const server = Bun.serve({
   port: PORT,
-  async fetch(req) {
+  async fetch(req: Request): Promise<Response> {
     const url = new URL(req.url);
     let pathname = url.pathname;
 
@@ -49,18 +49,19 @@ const server = Bun.serve({
 });
 
 // Watch for file changes
-const watchPaths = ['js', 'css', 'index.html', 'project'];
+const watchPaths: string[] = ['js', 'css', 'index.html', 'project'];
 
 watchPaths.forEach(path => {
   try {
-    watch(path, { recursive: true }, (eventType, filename) => {
+    watch(path, { recursive: true }, (_eventType, filename) => {
       if (filename) {
         console.log(`📝 File changed: ${path}/${filename}`);
         console.log('   Refresh your browser to see changes');
       }
     });
   } catch (error) {
-    console.log(`⚠️  Could not watch ${path}: ${error.message}`);
+    const err = error as Error;
+    console.log(`⚠️  Could not watch ${path}: ${err.message}`);
   }
 });
 
