@@ -303,8 +303,8 @@ h3 {
 
 .icon-sun::before {
   background: var(--text);
-  width: 10px;
-  height: 10px;
+  width: 8px;
+  height: 8px;
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
@@ -322,30 +322,18 @@ h3 {
     linear-gradient(var(--text), var(--text)),
     linear-gradient(var(--text), var(--text)),
     linear-gradient(var(--text), var(--text)),
-    linear-gradient(var(--text), var(--text)),
-    linear-gradient(var(--text), var(--text)),
-    linear-gradient(var(--text), var(--text)),
-    linear-gradient(var(--text), var(--text)),
     linear-gradient(var(--text), var(--text));
   background-size:
-    2px 4px,
-    4px 2px,
-    2px 4px,
-    4px 2px,
-    3px 3px,
-    3px 3px,
-    3px 3px,
-    3px 3px;
+    1.5px 5px,
+    5px 1.5px,
+    1.5px 5px,
+    5px 1.5px;
   background-repeat: no-repeat;
   background-position:
     center top,
     right center,
     center bottom,
-    left center,
-    calc(100% - 1px) 1px,
-    1px 1px,
-    1px calc(100% - 1px),
-    calc(100% - 1px) calc(100% - 1px);
+    left center;
 }
 
 .icon-moon::before {

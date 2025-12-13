@@ -405,7 +405,14 @@ const setupMagneticButtons = (): void => {
 const setupMagneticCards = (): void => {
   if (prefersReducedMotion) return;
   const strength = 8;
-  const selectors = ['.contact-card', '.timeline-item'];
+  const selectors = [
+    '.signal-card',
+    '.meta-block',
+    '.project-card',
+    '.capability-card',
+    '.contact-card',
+    '.timeline-item',
+  ];
 
   selectors.forEach(selector => {
     qsa<HTMLElement>(selector).forEach(card => {
