@@ -24,6 +24,8 @@ bun run dev
 
 This will start a local server at `http://localhost:3000` and watch for file changes.
 
+**Note:** The development server automatically transpiles TypeScript files (`.ts`) to JavaScript (`.js`) on-the-fly when requested by the browser. This means you can develop with TypeScript without needing a separate build step.
+
 ## Production Build
 
 Build the optimized production bundle:
@@ -57,8 +59,8 @@ bun run format
 ```text
 .
 ├── css/              # Stylesheets
-├── js/               # JavaScript files
-│   ├── app.js       # Main application file
+├── js/               # TypeScript/JavaScript files
+│   ├── app.ts       # Main application file (TypeScript)
 │   └── vendor/      # Third-party libraries
 ├── img/             # Images and favicon
 ├── project/         # Project detail pages
@@ -66,8 +68,8 @@ bun run format
 ├── 404.html         # 404 error page
 ├── redirect.html    # Generic redirect handler
 ├── redirects.json   # Redirect configuration
-├── build.js         # Production build script
-└── dev-server.js    # Development server script
+├── build.ts         # Production build script
+└── dev-server.ts    # Development server script
 ```
 
 ## Redirect System

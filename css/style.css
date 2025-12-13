@@ -283,7 +283,9 @@ h3 {
   height: 18px;
   display: block;
   position: absolute;
-  transition: opacity 0.18s ease, transform 0.18s ease;
+  transition:
+    opacity 0.18s ease,
+    transform 0.18s ease;
 }
 
 .icon-button {
@@ -301,16 +303,49 @@ h3 {
 
 .icon-sun::before {
   background: var(--text);
+  width: 10px;
+  height: 10px;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
 }
 
 .icon-sun::after {
   content: '';
   position: absolute;
-  inset: -5px;
-  border-radius: 50%;
-  border: 2px solid var(--text);
-  background: transparent;
-  opacity: 0.7;
+  top: 50%;
+  left: 50%;
+  width: 18px;
+  height: 18px;
+  transform: translate(-50%, -50%);
+  background:
+    linear-gradient(var(--text), var(--text)),
+    linear-gradient(var(--text), var(--text)),
+    linear-gradient(var(--text), var(--text)),
+    linear-gradient(var(--text), var(--text)),
+    linear-gradient(var(--text), var(--text)),
+    linear-gradient(var(--text), var(--text)),
+    linear-gradient(var(--text), var(--text)),
+    linear-gradient(var(--text), var(--text));
+  background-size:
+    2px 4px,
+    4px 2px,
+    2px 4px,
+    4px 2px,
+    3px 3px,
+    3px 3px,
+    3px 3px,
+    3px 3px;
+  background-repeat: no-repeat;
+  background-position:
+    center top,
+    right center,
+    center bottom,
+    left center,
+    calc(100% - 1px) 1px,
+    1px 1px,
+    1px calc(100% - 1px),
+    calc(100% - 1px) calc(100% - 1px);
 }
 
 .icon-moon::before {
