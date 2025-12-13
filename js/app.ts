@@ -402,6 +402,27 @@ const setupMagneticButtons = (): void => {
   });
 };
 
+const setupMagneticCards = (): void => {
+  if (prefersReducedMotion) return;
+  const strength = 8;
+  const selectors = ['.contact-card', '.timeline-item'];
+
+  selectors.forEach(selector => {
+    qsa<HTMLElement>(selector).forEach(card => {
+      card.addEventListener('pointermove', (e: PointerEvent) => {
+        const rect = card.getBoundingClientRect();
+        const x = ((e.clientX - rect.left) / rect.width - 0.5) * strength;
+        const y = ((e.clientY - rect.top) / rect.height - 0.5) * strength;
+        card.style.transform = `translate(${x}px, ${y}px)`;
+      });
+
+      card.addEventListener('pointerleave', () => {
+        card.style.transform = 'translate(0, 0)';
+      });
+    });
+  });
+};
+
 const init = (): void => {
   renderSignals();
   renderProjects();
@@ -414,6 +435,7 @@ const init = (): void => {
   setupProgress();
   setupReveal();
   setupMagneticButtons();
+  setupMagneticCards();
 };
 
 document.addEventListener('DOMContentLoaded', init);
