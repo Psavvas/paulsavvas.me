@@ -40,6 +40,12 @@ const server = Bun.serve({
             format: 'esm',
           });
 
+          if (!transpiled.success) {
+            console.error('❌ Transpilation failed:');
+            transpiled.logs.forEach(log => console.error(log));
+            return new Response('Transpilation Error', { status: 500 });
+          }
+
           if (transpiled.outputs.length > 0) {
             return new Response(transpiled.outputs[0], {
               headers: {
