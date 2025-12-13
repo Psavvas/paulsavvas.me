@@ -4,7 +4,7 @@ const projects = [
     time: 'Spring 2025',
     summary:
       'An all-in-one chemistry handheld that turns dense formulas into fast, reliable answers.',
-    link: 'project/project3.html',
+    link: 'project/mole-mini.html',
     tags: ['Chemistry', 'Product design', 'Embedded thinking'],
   },
   {
@@ -12,15 +12,15 @@ const projects = [
     time: 'Winter 2025',
     summary:
       'A set of calm, automation-ready workspaces that keep projects and accountability lightweight.',
-    link: 'project/project2.html',
+    link: 'project/notion-templates.html',
     tags: ['Information design', 'Automation', 'Productivity'],
   },
   {
-    title: 'Shock absorption research',
+    title: '3D Infill Optimization',
     time: 'Fall 2025',
     summary:
       'Science fair research on infill strategies for 3D prints—earned 1st place for measurable impact.',
-    link: 'project/project1.html',
+    link: 'project/3d-infill-optimization.html',
     tags: ['Research', '3D printing', 'Experiment design'],
   },
   {
@@ -28,7 +28,7 @@ const projects = [
     time: 'Winter 2024',
     summary:
       'A seating and interior rethink for comfort and flow, modeled end-to-end in 3D.',
-    link: 'project/project4.html',
+    link: 'project/aircraft-cabins.html',
     tags: ['CAD', 'Human factors', 'Visualization'],
   },
 ];
@@ -36,12 +36,12 @@ const projects = [
 const signals = [
   {
     label: 'Current focus',
-    value: 'Turning research into approachable tools with motion and clarity.',
+    value: 'Building practical tools and systems that help the world work better.',
   },
   {
     label: 'Leadership',
     value:
-      'Guiding STEM peers; leading teams through product thinking and fast feedback.',
+      'Leading STEM peers with product thinking, fast feedback, and clear execution.',
   },
   {
     label: 'Toolbox',
@@ -51,7 +51,7 @@ const signals = [
   {
     label: 'Mindset',
     value:
-      'Systems-first, deliberate animation, ship small loops, then polish.',
+      'Systems first, always learning. I ship small, learn fast from real feedback, and continuously refine my work with intention and discipline.',
   },
 ];
 
@@ -175,7 +175,7 @@ const renderProjects = () => {
 
     const link = create('div', 'link-row');
     link.innerHTML = '<span>Open</span><strong>↗</strong>';
-    link.addEventListener('click', () => window.open(project.link, '_blank'));
+    link.addEventListener('click', () => window.location.href = project.link);
     card.append(link);
 
     grid.append(card);
@@ -217,15 +217,24 @@ const renderContacts = () => {
   contacts.forEach(contact => {
     const card = create('article', 'card contact-card');
     card.setAttribute('data-reveal', '');
+    card.style.cursor = 'pointer';
     card.append(create('h3', null, contact.title));
     card.append(create('p', null, contact.body));
     const ctaRow = create('div', 'cta-row');
     const link = create('a', null, contact.cta);
+    link.innerHTML = `${contact.cta} <strong>→</strong>`;
     link.href = contact.link;
     link.target = contact.link.startsWith('http') ? '_blank' : '_self';
     link.rel = 'noreferrer';
     ctaRow.append(link);
     card.append(ctaRow);
+    
+    card.addEventListener('click', (e) => {
+      if (e.target !== link && !e.target.closest('a')) {
+        link.click();
+      }
+    });
+    
     grid.append(card);
   });
 };
@@ -292,6 +301,33 @@ const setupTheme = () => {
   });
 };
 
+const setupContactModal = () => {
+  const triggers = qsa('[data-contact-modal]');
+  const backdrop = qs('[data-contact-modal-backdrop]');
+  const closeBtn = qs('[data-contact-modal-close]');
+  if (!backdrop || triggers.length === 0) return;
+
+  const open = () => backdrop.removeAttribute('hidden');
+  const close = () => backdrop.setAttribute('hidden', '');
+
+  triggers.forEach(t =>
+    t.addEventListener('click', e => {
+      e.preventDefault();
+      open();
+    })
+  );
+
+  backdrop.addEventListener('click', e => {
+    if (e.target === backdrop) close();
+  });
+
+  if (closeBtn) closeBtn.addEventListener('click', close);
+
+  window.addEventListener('keydown', e => {
+    if (e.key === 'Escape' && !backdrop.hasAttribute('hidden')) close();
+  });
+};
+
 const setupProgress = () => {
   const bar = qs('#scroll-progress');
   if (!bar) return;
@@ -331,6 +367,7 @@ const init = () => {
   renderContacts();
   setupNav();
   setupTheme();
+  setupContactModal();
   setupProgress();
   setupReveal();
   setupMagneticButtons();
