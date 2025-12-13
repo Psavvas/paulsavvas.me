@@ -53,6 +53,11 @@ const server = Bun.serve({
               },
             });
           }
+
+          console.error('❌ Transpilation produced no output');
+          return new Response('Transpilation Error: No output', {
+            status: 500,
+          });
         }
       }
 
