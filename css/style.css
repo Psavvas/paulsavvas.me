@@ -780,11 +780,10 @@ body[data-theme='light'] .icon-moon {
 }
 
 .timeline-item::before {
-  transform: translateY(-3px);
-  border-color: rgba(116, 249, 229, 0.4);
-  box-shadow: 0 14px 26px rgba(0, 0, 0, 0.18);
-  background: rgba(255, 255, 255, 0.04);
-  top: 20px;
+  content: '';
+  position: absolute;
+  left: 25px;
+  top: 23px;
   width: 12px;
   height: 12px;
   border-radius: 50%;
