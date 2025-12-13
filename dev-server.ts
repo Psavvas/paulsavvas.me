@@ -28,6 +28,28 @@ const server = Bun.serve({
       const file = Bun.file(filePath);
       const exists = await file.exists();
 
+      // If .js file doesn't exist, try to transpile corresponding .ts file
+      if (!exists && pathname.endsWith('.js')) {
+        const tsPath = filePath.replace(/\.js$/, '.ts');
+        const tsFile = Bun.file(tsPath);
+        if (await tsFile.exists()) {
+          console.log(`📦 Transpiling ${tsPath} -> ${pathname}`);
+          const transpiled = await Bun.build({
+            entrypoints: [tsPath],
+            target: 'browser',
+            format: 'esm',
+          });
+
+          if (transpiled.outputs.length > 0) {
+            return new Response(transpiled.outputs[0], {
+              headers: {
+                'Content-Type': 'application/javascript',
+              },
+            });
+          }
+        }
+      }
+
       if (!exists) {
         // Try to serve 404.html
         const notFoundFile = Bun.file(join(process.cwd(), '404.html'));
