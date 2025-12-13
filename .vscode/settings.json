@@ -1,0 +1,10 @@
+{
+  "html.validate.styles": false,
+  "css.lint.important": "ignore",
+  "html-validate.validate": [
+    "html"
+  ],
+  "html-validate.rules": {
+    "no-inline-style": "off"
+  }
+}

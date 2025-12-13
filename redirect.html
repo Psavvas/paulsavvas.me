@@ -3,40 +3,84 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Redirecting...</title>
+    <title>Redirecting…</title>
+    <link
+      href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Sora:wght@300;400;500;600&display=swap"
+      rel="stylesheet"
+    />
     <style>
+      :root {
+        --bg: #05080f;
+        --card: rgba(255, 255, 255, 0.03);
+        --border: rgba(255, 255, 255, 0.08);
+        --text: #f1f5ff;
+        --muted: #a2b3cc;
+        --accent: #74f9e5;
+        --accent-2: #7bd7ff;
+        --shadow: 0 20px 60px rgba(0, 0, 0, 0.45);
+      }
+
+      * {
+        box-sizing: border-box;
+      }
+
       body {
-        font-family:
-          'Inter',
-          -apple-system,
-          BlinkMacSystemFont,
-          'Segoe UI',
-          sans-serif;
+        font-family: 'Space Grotesk', 'Sora', -apple-system, 'Segoe UI', sans-serif;
         display: flex;
         justify-content: center;
         align-items: center;
         min-height: 100vh;
         margin: 0;
-        background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-        color: white;
+        background:
+          radial-gradient(circle at 20% 20%, rgba(116, 249, 229, 0.08), transparent 28%),
+          radial-gradient(circle at 80% 0%, rgba(123, 215, 255, 0.1), transparent 24%),
+          linear-gradient(180deg, #0a0f18 0%, #05080f 100%);
+        color: var(--text);
+        padding: 32px;
       }
+
       .container {
+        width: min(540px, 100%);
         text-align: center;
-        padding: 2rem;
-        background: rgba(255, 255, 255, 0.1);
-        border-radius: 16px;
-        backdrop-filter: blur(10px);
-        box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
+        padding: 32px 28px;
+        background: var(--card);
+        border: 1px solid var(--border);
+        border-radius: 18px;
+        backdrop-filter: blur(14px);
+        box-shadow: var(--shadow);
       }
+
+      .eyebrow {
+        text-transform: uppercase;
+        letter-spacing: 0.08em;
+        font-size: 0.8rem;
+        color: var(--muted);
+        margin-bottom: 8px;
+      }
+
+      h1 {
+        margin: 0 0 12px;
+        font-size: 1.6rem;
+        letter-spacing: -0.01em;
+      }
+
+      p {
+        margin: 0 0 16px;
+        color: var(--muted);
+        line-height: 1.6;
+      }
+
       .spinner {
-        border: 4px solid rgba(255, 255, 255, 0.3);
-        border-top: 4px solid white;
+        border: 4px solid rgba(255, 255, 255, 0.12);
+        border-top: 4px solid var(--accent);
+        border-right: 4px solid var(--accent-2);
         border-radius: 50%;
-        width: 40px;
-        height: 40px;
-        animation: spin 1s linear infinite;
-        margin: 0 auto 1rem;
+        width: 42px;
+        height: 42px;
+        animation: spin 0.9s linear infinite;
+        margin: 0 auto 18px;
       }
+
       @keyframes spin {
         0% {
           transform: rotate(0deg);
@@ -45,12 +89,46 @@
           transform: rotate(360deg);
         }
       }
-      a {
-        color: white;
-        text-decoration: underline;
+
+      .pill {
+        display: inline-flex;
+        align-items: center;
+        gap: 8px;
+        padding: 8px 12px;
+        border-radius: 999px;
+        background: rgba(116, 249, 229, 0.08);
+        color: var(--accent);
+        border: 1px solid rgba(116, 249, 229, 0.2);
+        margin-bottom: 14px;
+        font-weight: 600;
+        letter-spacing: 0.01em;
       }
+
+      a {
+        color: var(--text);
+        text-decoration: none;
+        font-weight: 600;
+      }
+
+      .link {
+        display: inline-flex;
+        align-items: center;
+        gap: 8px;
+        padding: 10px 14px;
+        border-radius: 10px;
+        border: 1px solid var(--border);
+        background: rgba(255, 255, 255, 0.02);
+        transition: all 0.2s ease;
+      }
+
+      .link:hover {
+        border-color: rgba(116, 249, 229, 0.5);
+        color: var(--accent);
+        transform: translateY(-1px);
+      }
+
       .error {
-        color: #ffcccc;
+        color: #ffb3c1;
       }
     </style>
     <script type="module">
@@ -109,14 +187,17 @@
   <body>
     <div class="container">
       <div id="loading">
-        <div class="spinner"></div>
-        <h2>Redirecting...</h2>
-        <p>Please wait while we redirect you.</p>
+        <div class="pill">Redirecting</div>
+        <div class="spinner" aria-hidden="true"></div>
+        <h1>Taking you to your destination</h1>
+        <p>Please wait a moment while we redirect you to the requested page.</p>
+        <p><a class="link" href="/">Return to homepage</a></p>
       </div>
       <div id="error" style="display: none">
-        <h2 class="error">Redirect Error</h2>
+        <div class="pill">Redirect error</div>
+        <h1 class="error">We couldn’t complete that redirect</h1>
         <p id="errorMessage"></p>
-        <p><a href="/">Return to homepage</a></p>
+        <p><a class="link" href="/">Back to homepage</a></p>
       </div>
     </div>
   </body>
