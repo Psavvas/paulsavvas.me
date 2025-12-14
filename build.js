@@ -31,6 +31,7 @@ const filesToCopy = [
   { from: 'redirect.html', to: 'redirect.html' },
   { from: 'redirects.json', to: 'redirects.json' },
   { from: 'infantguard.html', to: 'infantguard.html' },
+  { from: 'contact.html', to: 'contact.html' },
   { from: '404.html', to: '404.html' },
   { from: 'robots.txt', to: 'robots.txt' },
   { from: 'site.webmanifest', to: 'site.webmanifest' },
