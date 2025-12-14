@@ -39,7 +39,7 @@ const filesToCopy = [
   { from: 'css', to: 'css' },
   { from: 'img', to: 'img' },
   { from: 'js/vendor', to: 'js/vendor' },
-  { from: 'project', to: 'project' },
+  { from: 'projects', to: 'projects' },
 ];
 
 for (const { from, to } of filesToCopy) {

@@ -995,7 +995,7 @@ section {
     text-align: center;
   }
 
-  /* Ensure project cards stack properly */
+  /* Ensure projects cards stack properly */
   .project-grid {
     display: grid;
     grid-template-columns: 1fr;
