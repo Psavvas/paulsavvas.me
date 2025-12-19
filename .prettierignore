@@ -1,22 +1,5 @@
-# Dependencies
-node_modules
-
-# Build output
-dist
-
-# Cache
-.cache
-
-# OS files
-.DS_Store
-
-# IDE
+# Ignore artifacts:
+build
+coverage
 .idea
-.vscode
-
-# Logs
-*.log
-
-# Lock files
-bun.lockb
-package-lock.json
+.next

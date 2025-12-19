@@ -1,25 +1,33 @@
 {
-  "name": "paulsavvas-website",
-  "version": "0.0.1",
-  "description": "Paul Savvas's personal portfolio website",
+  "name": "paulsavvas.me",
+  "version": "0.1.0",
   "private": true,
-  "keywords": [
-    "portfolio",
-    "personal-website",
-    "resume",
-    "paul-savvas"
-  ],
-  "license": "MIT",
-  "author": "Paul Savvas",
+  "packageManager": "pnpm@10.25.0",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "bun run dev-server.js",
-    "dev": "bun run dev-server.js",
-    "build": "bun run build.js",
+    "dev": "next dev",
+    "build": "next build",
+    "start": "next start",
+    "lint": "eslint . --max-warnings 0",
     "format": "prettier --write .",
-    "format:check": "prettier --check ."
+    "format:check": "prettier --check .",
+    "typecheck": "tsc -p tsconfig.json --noEmit"
+  },
+  "dependencies": {
+    "next": "16.0.10",
+    "next-themes": "^0.4.6",
+    "react": "19.2.1",
+    "react-dom": "19.2.1"
   },
   "devDependencies": {
-    "prettier": "3.7.4"
+    "@tailwindcss/postcss": "^4.1.18",
+    "@types/node": "^20.19.27",
+    "@types/react": "^19.2.7",
+    "@types/react-dom": "^19.2.3",
+    "eslint": "^9.39.2",
+    "eslint-config-next": "16.0.10",
+    "eslint-config-prettier": "^10.1.8",
+    "prettier": "3.7.4",
+    "tailwindcss": "^4.1.18",
+    "typescript": "^5.9.3"
   }
 }
