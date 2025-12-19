@@ -7,7 +7,7 @@ export const metadata: Metadata = {
 };
 
 const githubProfileUrl = 'https://github.com/psavvas';
-const emailAddressPlaceholder = 'hello@paulsavvas.me';
+const emailAddressPlaceholder = 'resume@paulsavvas.me';
 
 export default function ContactPage() {
   return (
