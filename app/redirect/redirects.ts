@@ -11,6 +11,10 @@ export const REDIRECTS: Record<RedirectSlug, string> = {
   example: 'https://example.com',
   infantguard: 'https://drive.proton.me/urls/GTHB40AV9M#bUy6nRmkFvVw',
   contact: 'https://psavvas.notion.site/15770b9af471809da736d4e77a090ce0',
+  linkedin: 'https://www.linkedin.com/in/pauldsavvas',
+  gravatar: 'https://www.gravatar.com/avatar/paulsavvas',
+  github: 'https://github.com/psavvas',
+  thingiverse: 'https://www.thingiverse.com/psavvas',
 };
 
 export function resolveRedirectDestination(options: {
