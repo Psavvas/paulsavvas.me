@@ -65,6 +65,7 @@ const projects: Project[] = [
 ];
 
 const githubProfileUrl = 'https://github.com/psavvas';
+const thingiverseProfileUrl = 'https://www.thingiverse.com/psavvas';
 
 export default function ProjectsPage() {
   return (
@@ -77,11 +78,9 @@ export default function ProjectsPage() {
           <h1 className="mt-3 text-4xl font-semibold tracking-tight text-neutral-900 dark:text-neutral-100 sm:text-5xl">
             Selected work
           </h1>
-          <p className="mt-6 text-base leading-7 text-neutral-700 dark:text-neutral-300">
-            A growing collection of software, hardware, and 3D design work. I
-            prefer projects that are easy to explain, grounded in constraints,
-            and strong under real-world use.
-          </p>
+            <p className="mt-6 text-base leading-7 text-neutral-700 dark:text-neutral-300">
+            A growing collection of software, hardware, and 3D design work. I'm drawn to projects that can have a positive impact on the world—whether in small, everyday ways or larger initiatives—while staying grounded in real constraints and performing well in practice.
+            </p>
 
           <div className="mt-8">
             <a
@@ -90,7 +89,15 @@ export default function ProjectsPage() {
               target="_blank"
               rel="noopener noreferrer"
             >
-              Browse all projects on GitHub
+              Browse all code projects on GitHub
+            </a>
+            <a
+              className="ml-4 inline-flex items-center justify-center rounded-md border border-neutral-200 bg-white px-4 py-2 text-sm font-medium text-neutral-900 transition-colors hover:bg-neutral-50 dark:border-neutral-800 dark:bg-neutral-950 dark:text-neutral-100 dark:hover:bg-neutral-900 hover-lift"
+              href={thingiverseProfileUrl}
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              Browse all 3D design projects on Thingiverse
             </a>
           </div>
         </header>

@@ -7,7 +7,6 @@ export default function HomePage() {
             <div className="hero-copy" data-reveal>
               <p className="eyebrow">Student, Engineer, Developer and Leader</p>
               <h1>Paul Savvas</h1>
-              <h2>NOTE: THIS SITE IS A TEMPLATE. NOT ALL CONTENT HAS BEEN UPDATED AND IS ACCURATE.</h2>
               <p className="lede">
                 Hello, I am STEM Academy student who builds practical tools to
                 help the world work better. I combine engineering, design, and
@@ -26,6 +25,22 @@ export default function HomePage() {
                   rel="noopener noreferrer"
                 >
                   GitHub
+                </a>
+                <a
+                  className="button ghost"
+                  href="https://www.thingiverse.com/psavvas"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                >
+                  Thingiverse
+                </a>
+                <a
+                  className="button ghost"
+                  href="https://gravatar.com/psavvas"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                >
+                  Gravatar
                 </a>
               </div>
               <div className="hero-chips">

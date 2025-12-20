@@ -62,6 +62,15 @@ export default function RootLayout({
           enableSystem
           enableColorScheme
         >
+          <div className="bg-amber-500 px-4 py-3 text-center text-sm font-medium text-amber-950 dark:bg-amber-600 dark:text-amber-50">
+            <p>
+              🚧 This site has just been migrated to Next.js. I'm currently in the process of updating content across the site. Some information may not be up-to-date yet. Questions? The{' '}
+              <a href="/contact" className="underline hover:text-amber-900 dark:hover:text-amber-100">
+                contact page
+              </a>{' '}
+              is ready to go.
+            </p>
+          </div>
           <Navbar />
           {children}
           <Footer />

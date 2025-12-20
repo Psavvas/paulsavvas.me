@@ -18,10 +18,24 @@ export default function AboutPage() {
             Building practical tools, thoughtfully.
           </h1>
           <p className="mt-6 text-base leading-7 text-neutral-700 dark:text-neutral-300">
-            I’m Paul Savvas — a student at the SMCPS STEM Academy (Grade 10)
+            I'm Paul Savvas — a student at the SMCPS STEM Academy (Grade 10)
             who enjoys turning ideas into real, working things. I like projects
             where engineering and design meet: clear constraints, measurable
             results, and details that hold up outside a demo.
+          </p>          
+          <p className="mt-4 text-base leading-7 text-neutral-700 dark:text-neutral-300">
+            Most of my projects start with failure — circuits that don't work,
+            code that breaks, prints that warp. I treat those setbacks as data:
+            they show what needs fixing. Through CAD design, programming, and
+            hardware builds, I've learned that progress comes from testing
+            assumptions early and iterating until the solution works reliably.
+          </p>
+          <p className="mt-4 text-base leading-7 text-neutral-700 dark:text-neutral-300">
+            Alongside my projects, I maintain straight A's at the STEM Academy
+            and look for opportunities to help classmates work through technical
+            problems. Leadership, for me, means making sure the people around you
+            have what they need to improve — whether that's clearer documentation,
+            a second perspective, or just accountability to keep moving forward.
           </p>
         </header>
 
@@ -55,6 +69,12 @@ export default function AboutPage() {
                 </span>{' '}
                 document decisions and make the work easy to collaborate on.
               </li>
+              <li>
+                <span className="font-medium text-neutral-900 dark:text-neutral-100">
+                  Learning from failure:
+                </span>{' '}
+                treat setbacks as feedback and use them to refine the approach.
+              </li>
             </ul>
           </div>
 
@@ -85,17 +105,14 @@ export default function AboutPage() {
           </h2>
           <div className="mt-4 space-y-4 text-base leading-7 text-neutral-700 dark:text-neutral-300">
             <p>
-              Right now, I’m focused on building a portfolio of projects that
-              are simple to explain and strong under scrutiny — the kind of work
-              that can be read, run, and reused.
+              Right now, I’m focused on building InfantGuard an open-source Arduino based vehicle monitoring system that tracks a car's interior temperature and alerts caregivers if it rises to dangerous levels while an infant is present.
             </p>
             <p>
-              If you want to see what I’m working on, the best place to start is
-              my GitHub.
+              If you want to see what I’m working on, the best place to start is my GitHub or Thingiverse.
             </p>
           </div>
 
-          <div className="mt-8">
+            <div className="mt-8 flex gap-4">
             <a
               className="inline-flex items-center justify-center rounded-md border border-neutral-200 bg-white px-4 py-2 text-sm font-medium text-neutral-900 transition-colors hover:bg-neutral-50 dark:border-neutral-800 dark:bg-neutral-950 dark:text-neutral-100 dark:hover:bg-neutral-900 hover-lift"
               href="https://github.com/psavvas"
@@ -104,7 +121,15 @@ export default function AboutPage() {
             >
               Visit GitHub
             </a>
-          </div>
+            <a
+              className="inline-flex items-center justify-center rounded-md border border-neutral-200 bg-white px-4 py-2 text-sm font-medium text-neutral-900 transition-colors hover:bg-neutral-50 dark:border-neutral-800 dark:bg-neutral-950 dark:text-neutral-100 dark:hover:bg-neutral-900 hover-lift"
+              href="https://www.thingiverse.com/psavvas/"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              Visit Thingiverse
+            </a>
+            </div>
         </section>
       </main>
     </div>
