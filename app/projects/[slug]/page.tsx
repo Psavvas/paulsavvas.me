@@ -190,7 +190,10 @@ export default async function ProjectPage({ params }: ProjectPageProps) {
                 if (isYouTube && section.src) {
                   // Extract video ID from YouTube URL
                   let videoId = '';
-                  if (section.src.includes('youtu.be/')) {
+                  if (section.src.includes('/embed/')) {
+                    // Already an embed URL, extract ID from it
+                    videoId = section.src.split('/embed/')[1]?.split('?')[0] || '';
+                  } else if (section.src.includes('youtu.be/')) {
                     videoId = section.src.split('youtu.be/')[1]?.split('?')[0] || '';
                   } else if (section.src.includes('youtube.com')) {
                     const urlParams = new URLSearchParams(section.src.split('?')[1]);
