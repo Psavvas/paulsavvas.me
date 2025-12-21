@@ -131,7 +131,7 @@ export default function ProjectsPage() {
               Featured Projects
             </h2>
             <p className="mt-3 max-w-3xl text-sm leading-6 text-neutral-600 dark:text-neutral-400">
-              A few of my most impactful, noteworthy or favoritie projects.
+              A few of my most impactful, noteworthy or favorite projects.
             </p>
           </div>
 
