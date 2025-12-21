@@ -60,25 +60,25 @@ export default function HomePage() {
               </div>
               <div className="signal-rail" id="signal-rail"></div>
               <div className="meta-row">
-                <div className="meta-block" style={{ gridColumn: '1 / -1' }}>
+                <div className="meta-block meta-block--full">
                   <p className="label">Philosophy</p>
                   <p className="value">Build, test, refine, ship — then improve it again</p>
                 </div>
               </div>
               <div className="meta-row">
-                <div className="meta-block" style={{ gridColumn: '1 / -1' }}>
+                <div className="meta-block meta-block--full">
                   <p className="label">Priorities</p>
                   <p className="value">Impact over complexity · Durability over speed · Real problems over theory</p>
                 </div>
               </div>
               <div className="meta-row">
-                <div className="meta-block" style={{ gridColumn: '1 / -1' }}>
+                <div className="meta-block meta-block--full">
                   <p className="label">Design Principle</p>
                   <p className="value">Make it simple, make it work, make it last</p>
                 </div>
               </div>
               <div className="meta-row">
-                <div className="meta-block" style={{ gridColumn: '1 / -1' }}>
+                <div className="meta-block meta-block--full">
                   <p className="label">Languages</p>
                   <p className="value">English, French, Spanish (Intermediate)</p>
                 </div>
