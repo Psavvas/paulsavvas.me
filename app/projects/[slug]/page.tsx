@@ -160,6 +160,30 @@ export default async function ProjectPage({ params }: ProjectPageProps) {
                 );
               }
 
+              if (section.type === 'gallery') {
+                return (
+                  <div key={index} className="my-8 grid grid-cols-1 gap-6 md:grid-cols-2">
+                    {section.items?.map((item, itemIndex) => (
+                      <figure key={itemIndex}>
+                        <div className="relative aspect-[4/3] w-full overflow-hidden rounded-lg border border-neutral-200 dark:border-neutral-800">
+                          <Image
+                            src={item.src}
+                            alt={item.alt}
+                            fill
+                            className="object-cover"
+                          />
+                        </div>
+                        {item.caption ? (
+                          <figcaption className="mt-3 text-center text-sm text-neutral-600 dark:text-neutral-400">
+                            {item.caption}
+                          </figcaption>
+                        ) : null}
+                      </figure>
+                    ))}
+                  </div>
+                );
+              }
+
               if (section.type === 'video') {
                 // YouTube embed
                 const isYouTube = section.src?.includes('youtube.com') || section.src?.includes('youtu.be');

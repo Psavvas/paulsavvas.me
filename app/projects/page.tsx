@@ -65,7 +65,7 @@ const projects: Project[] = [
     tags: ['Next.js', 'Tailwind CSS', 'Portfolio'],
     year: ['2025'],
     featured: false,
-    repo: 'psavvas/paulosavvas.me',
+    repo: 'psavvas/personal-portfolio-website',
   },
   {
     title: 'Daily Digest',
@@ -92,7 +92,7 @@ const projects: Project[] = [
     tags: ['Productivity', 'Lifestyle', 'Notion'],
     year: ['2025'],
     featured: true,
-    repo: 'psavvas/hardware-3d-design',
+    projectPage: 'notion-templates',
   },
   {
     title: '3D Printing for Shock Absorption',
@@ -322,7 +322,7 @@ export default function ProjectsPage() {
                         href={learnMoreInfo.url}
                         {...(learnMoreInfo.isExternal ? { target: "_blank", rel: "noopener noreferrer" } : {})}
                       >
-                        Learn More
+                        View
                       </a>
                     ) : null}
                   </div>
