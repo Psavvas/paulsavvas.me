@@ -31,6 +31,32 @@ export function getGitHubRepoUrl(repo?: string) {
   return `https://github.com/${trimmed.replace(/^\//, '')}`;
 }
 
+function getLearnMoreUrl(project: Project): { url: string; isExternal: boolean } | null {
+  if (project.projectPage) {
+    // Internal project page
+    return {
+      url: `/projects/${project.projectPage}`,
+      isExternal: false,
+    };
+  } else if (project.link) {
+    // Custom external link
+    return {
+      url: project.link.href,
+      isExternal: true,
+    };
+  } else {
+    const repoUrl = getGitHubRepoUrl(project.repo);
+    if (repoUrl) {
+      // GitHub repo as fallback
+      return {
+        url: repoUrl,
+        isExternal: true,
+      };
+    }
+  }
+  return null;
+}
+
 const projects: Project[] = [
   {
     title: 'Personal Portfolio Website',
@@ -141,25 +167,7 @@ export default function ProjectsPage() {
               // Treat projects with `featured` === true or undefined as featured; only exclude ones explicitly marked `featured: false`.
               .filter((p) => p.featured !== false)
               .map((project) => {
-              const repoUrl = getGitHubRepoUrl(project.repo);
-              
-              // Determine the Learn More button URL and if it should be external
-              let learnMoreUrl = '';
-              let isExternal = false;
-              
-              if (project.projectPage) {
-                // Internal project page
-                learnMoreUrl = `/projects/${project.projectPage}`;
-                isExternal = false;
-              } else if (project.link) {
-                // Custom external link
-                learnMoreUrl = project.link.href;
-                isExternal = true;
-              } else if (repoUrl) {
-                // GitHub repo as fallback
-                learnMoreUrl = repoUrl;
-                isExternal = true;
-              }
+              const learnMoreInfo = getLearnMoreUrl(project);
               
               const yearList = Array.isArray(project.year)
                 ? project.year
@@ -211,11 +219,11 @@ export default function ProjectsPage() {
                     </div>
 
                     <div className="flex flex-wrap gap-3 sm:justify-end">
-                      {learnMoreUrl ? (
+                      {learnMoreInfo ? (
                         <a
                           className="inline-flex items-center justify-center rounded-md border border-neutral-200 bg-white px-4 py-2 text-sm font-medium text-neutral-900 transition-colors hover:bg-neutral-50 dark:border-neutral-800 dark:bg-neutral-950 dark:text-neutral-100 dark:hover:bg-neutral-900 hover-lift"
-                          href={learnMoreUrl}
-                          {...(isExternal ? { target: "_blank", rel: "noopener noreferrer" } : {})}
+                          href={learnMoreInfo.url}
+                          {...(learnMoreInfo.isExternal ? { target: "_blank", rel: "noopener noreferrer" } : {})}
                         >
                           Learn More
                         </a>
@@ -257,25 +265,7 @@ export default function ProjectsPage() {
 
           <ul className="mt-6 rounded-xl border border-neutral-200 bg-white dark:border-neutral-800 dark:bg-neutral-950 divide-y divide-neutral-200 dark:divide-neutral-800">
             {projects.map((project) => {
-              const repoUrl = getGitHubRepoUrl(project.repo);
-              
-              // Determine the Learn More button URL and if it should be external
-              let learnMoreUrl = '';
-              let isExternal = false;
-              
-              if (project.projectPage) {
-                // Internal project page
-                learnMoreUrl = `/projects/${project.projectPage}`;
-                isExternal = false;
-              } else if (project.link) {
-                // Custom external link
-                learnMoreUrl = project.link.href;
-                isExternal = true;
-              } else if (repoUrl) {
-                // GitHub repo as fallback
-                learnMoreUrl = repoUrl;
-                isExternal = true;
-              }
+              const learnMoreInfo = getLearnMoreUrl(project);
               
               const yearList = Array.isArray(project.year)
                 ? project.year
@@ -326,11 +316,11 @@ export default function ProjectsPage() {
                   </div>
 
                   <div className="flex gap-3 sm:ml-6">
-                    {learnMoreUrl ? (
+                    {learnMoreInfo ? (
                       <a
                         className="inline-flex items-center justify-center rounded-md border border-neutral-200 bg-white px-3 py-1.5 text-sm font-medium text-neutral-900 transition-colors hover:bg-neutral-50 dark:border-neutral-800 dark:bg-neutral-950 dark:text-neutral-100 dark:hover:bg-neutral-900 hover-lift"
-                        href={learnMoreUrl}
-                        {...(isExternal ? { target: "_blank", rel: "noopener noreferrer" } : {})}
+                        href={learnMoreInfo.url}
+                        {...(learnMoreInfo.isExternal ? { target: "_blank", rel: "noopener noreferrer" } : {})}
                       >
                         Learn More
                       </a>
