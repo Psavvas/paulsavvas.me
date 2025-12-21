@@ -137,6 +137,7 @@ export default function ProjectsPage() {
 
           <div className="mt-8 grid gap-6 md:grid-cols-2">
             {projects
+              // Treat projects with `featured` === true or undefined as featured; only exclude ones explicitly marked `featured: false`.
               .filter((p) => p.featured !== false)
               .map((project) => {
               const repoUrl = getGitHubRepoUrl(project.repo);
