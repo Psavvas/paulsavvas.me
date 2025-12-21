@@ -18,6 +18,7 @@ type Project = {
     label: string;
     href: string;
   };
+  projectPage?: string; // Slug for internal project page
 };
 
 export function getGitHubRepoUrl(repo?: string) {
@@ -74,7 +75,7 @@ const projects: Project[] = [
     tags: ['3D Printing', 'Science Fair', 'Research'],
     year: ['2024'],
     featured: true,
-    repo: 'psavvas/psavvas.github.io',
+    projectPage: '3d-printing-shock-absorption',
   },
   {
     title: 'Aircraft Cabin Redesign',
@@ -83,7 +84,7 @@ const projects: Project[] = [
     tags: ['3D Printing', 'CAD', 'Aviation'],
     year: ['2024'],
     featured: false,
-    repo: 'psavvas/psavvas.github.io',
+    projectPage: 'aircraft-cabin-redesign',
   },
 ];
 
@@ -141,6 +142,25 @@ export default function ProjectsPage() {
               .filter((p) => p.featured !== false)
               .map((project) => {
               const repoUrl = getGitHubRepoUrl(project.repo);
+              
+              // Determine the Learn More button URL and if it should be external
+              let learnMoreUrl = '';
+              let isExternal = false;
+              
+              if (project.projectPage) {
+                // Internal project page
+                learnMoreUrl = `/projects/${project.projectPage}`;
+                isExternal = false;
+              } else if (project.link) {
+                // Custom external link
+                learnMoreUrl = project.link.href;
+                isExternal = true;
+              } else if (repoUrl) {
+                // GitHub repo as fallback
+                learnMoreUrl = repoUrl;
+                isExternal = true;
+              }
+              
               const yearList = Array.isArray(project.year)
                 ? project.year
                 : project.year
@@ -191,25 +211,13 @@ export default function ProjectsPage() {
                     </div>
 
                     <div className="flex flex-wrap gap-3 sm:justify-end">
-                      {repoUrl ? (
+                      {learnMoreUrl ? (
                         <a
                           className="inline-flex items-center justify-center rounded-md border border-neutral-200 bg-white px-4 py-2 text-sm font-medium text-neutral-900 transition-colors hover:bg-neutral-50 dark:border-neutral-800 dark:bg-neutral-950 dark:text-neutral-100 dark:hover:bg-neutral-900 hover-lift"
-                          href={repoUrl}
-                          target="_blank"
-                          rel="noopener noreferrer"
+                          href={learnMoreUrl}
+                          {...(isExternal ? { target: "_blank", rel: "noopener noreferrer" } : {})}
                         >
-                          GitHub Repo
-                        </a>
-                      ) : null}
-
-                      {project.link ? (
-                        <a
-                          className="inline-flex items-center justify-center rounded-md border border-neutral-200 bg-white px-4 py-2 text-sm font-medium text-neutral-900 transition-colors hover:bg-neutral-50 dark:border-neutral-800 dark:bg-neutral-950 dark:text-neutral-100 dark:hover:bg-neutral-900 hover-lift"
-                          href={project.link.href}
-                          target="_blank"
-                          rel="noopener noreferrer"
-                        >
-                          {project.link.label}
+                          Learn More
                         </a>
                       ) : null}
                     </div>
@@ -250,6 +258,25 @@ export default function ProjectsPage() {
           <ul className="mt-6 rounded-xl border border-neutral-200 bg-white dark:border-neutral-800 dark:bg-neutral-950 divide-y divide-neutral-200 dark:divide-neutral-800">
             {projects.map((project) => {
               const repoUrl = getGitHubRepoUrl(project.repo);
+              
+              // Determine the Learn More button URL and if it should be external
+              let learnMoreUrl = '';
+              let isExternal = false;
+              
+              if (project.projectPage) {
+                // Internal project page
+                learnMoreUrl = `/projects/${project.projectPage}`;
+                isExternal = false;
+              } else if (project.link) {
+                // Custom external link
+                learnMoreUrl = project.link.href;
+                isExternal = true;
+              } else if (repoUrl) {
+                // GitHub repo as fallback
+                learnMoreUrl = repoUrl;
+                isExternal = true;
+              }
+              
               const yearList = Array.isArray(project.year)
                 ? project.year
                 : project.year
@@ -299,24 +326,13 @@ export default function ProjectsPage() {
                   </div>
 
                   <div className="flex gap-3 sm:ml-6">
-                    {repoUrl ? (
+                    {learnMoreUrl ? (
                       <a
                         className="inline-flex items-center justify-center rounded-md border border-neutral-200 bg-white px-3 py-1.5 text-sm font-medium text-neutral-900 transition-colors hover:bg-neutral-50 dark:border-neutral-800 dark:bg-neutral-950 dark:text-neutral-100 dark:hover:bg-neutral-900 hover-lift"
-                        href={repoUrl}
-                        target="_blank"
-                        rel="noopener noreferrer"
+                        href={learnMoreUrl}
+                        {...(isExternal ? { target: "_blank", rel: "noopener noreferrer" } : {})}
                       >
-                        GitHub
-                      </a>
-                    ) : null}
-                    {project.link ? (
-                      <a
-                        className="inline-flex items-center justify-center rounded-md border border-neutral-200 bg-white px-3 py-1.5 text-sm font-medium text-neutral-900 transition-colors hover:bg-neutral-50 dark:border-neutral-800 dark:bg-neutral-950 dark:text-neutral-100 dark:hover:bg-neutral-900 hover-lift"
-                        href={project.link.href}
-                        target="_blank"
-                        rel="noopener noreferrer"
-                      >
-                        {project.link.label}
+                        Learn More
                       </a>
                     ) : null}
                   </div>
