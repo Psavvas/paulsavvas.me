@@ -18,6 +18,7 @@ type Project = {
     label: string;
     href: string;
   };
+  projectPage?: string; // Slug for internal project page
 };
 
 export function getGitHubRepoUrl(repo?: string) {
@@ -28,6 +29,32 @@ export function getGitHubRepoUrl(repo?: string) {
     return trimmed;
   }
   return `https://github.com/${trimmed.replace(/^\//, '')}`;
+}
+
+function getLearnMoreUrl(project: Project): { url: string; isExternal: boolean } | null {
+  if (project.projectPage) {
+    // Internal project page
+    return {
+      url: `/projects/${project.projectPage}`,
+      isExternal: false,
+    };
+  } else if (project.link) {
+    // Custom external link
+    return {
+      url: project.link.href,
+      isExternal: true,
+    };
+  } else {
+    const repoUrl = getGitHubRepoUrl(project.repo);
+    if (repoUrl) {
+      // GitHub repo as fallback
+      return {
+        url: repoUrl,
+        isExternal: true,
+      };
+    }
+  }
+  return null;
 }
 
 const projects: Project[] = [
@@ -74,7 +101,7 @@ const projects: Project[] = [
     tags: ['3D Printing', 'Science Fair', 'Research'],
     year: ['2024'],
     featured: true,
-    repo: 'psavvas/psavvas.github.io',
+    projectPage: '3d-printing-shock-absorption',
   },
   {
     title: 'Aircraft Cabin Redesign',
@@ -83,7 +110,7 @@ const projects: Project[] = [
     tags: ['3D Printing', 'CAD', 'Aviation'],
     year: ['2024'],
     featured: false,
-    repo: 'psavvas/psavvas.github.io',
+    projectPage: 'aircraft-cabin-redesign',
   },
 ];
 
@@ -140,7 +167,8 @@ export default function ProjectsPage() {
               // Treat projects with `featured` === true or undefined as featured; only exclude ones explicitly marked `featured: false`.
               .filter((p) => p.featured !== false)
               .map((project) => {
-              const repoUrl = getGitHubRepoUrl(project.repo);
+              const learnMoreInfo = getLearnMoreUrl(project);
+              
               const yearList = Array.isArray(project.year)
                 ? project.year
                 : project.year
@@ -191,25 +219,13 @@ export default function ProjectsPage() {
                     </div>
 
                     <div className="flex flex-wrap gap-3 sm:justify-end">
-                      {repoUrl ? (
+                      {learnMoreInfo ? (
                         <a
                           className="inline-flex items-center justify-center rounded-md border border-neutral-200 bg-white px-4 py-2 text-sm font-medium text-neutral-900 transition-colors hover:bg-neutral-50 dark:border-neutral-800 dark:bg-neutral-950 dark:text-neutral-100 dark:hover:bg-neutral-900 hover-lift"
-                          href={repoUrl}
-                          target="_blank"
-                          rel="noopener noreferrer"
+                          href={learnMoreInfo.url}
+                          {...(learnMoreInfo.isExternal ? { target: "_blank", rel: "noopener noreferrer" } : {})}
                         >
-                          GitHub Repo
-                        </a>
-                      ) : null}
-
-                      {project.link ? (
-                        <a
-                          className="inline-flex items-center justify-center rounded-md border border-neutral-200 bg-white px-4 py-2 text-sm font-medium text-neutral-900 transition-colors hover:bg-neutral-50 dark:border-neutral-800 dark:bg-neutral-950 dark:text-neutral-100 dark:hover:bg-neutral-900 hover-lift"
-                          href={project.link.href}
-                          target="_blank"
-                          rel="noopener noreferrer"
-                        >
-                          {project.link.label}
+                          Learn More
                         </a>
                       ) : null}
                     </div>
@@ -249,7 +265,8 @@ export default function ProjectsPage() {
 
           <ul className="mt-6 rounded-xl border border-neutral-200 bg-white dark:border-neutral-800 dark:bg-neutral-950 divide-y divide-neutral-200 dark:divide-neutral-800">
             {projects.map((project) => {
-              const repoUrl = getGitHubRepoUrl(project.repo);
+              const learnMoreInfo = getLearnMoreUrl(project);
+              
               const yearList = Array.isArray(project.year)
                 ? project.year
                 : project.year
@@ -299,24 +316,13 @@ export default function ProjectsPage() {
                   </div>
 
                   <div className="flex gap-3 sm:ml-6">
-                    {repoUrl ? (
+                    {learnMoreInfo ? (
                       <a
                         className="inline-flex items-center justify-center rounded-md border border-neutral-200 bg-white px-3 py-1.5 text-sm font-medium text-neutral-900 transition-colors hover:bg-neutral-50 dark:border-neutral-800 dark:bg-neutral-950 dark:text-neutral-100 dark:hover:bg-neutral-900 hover-lift"
-                        href={repoUrl}
-                        target="_blank"
-                        rel="noopener noreferrer"
+                        href={learnMoreInfo.url}
+                        {...(learnMoreInfo.isExternal ? { target: "_blank", rel: "noopener noreferrer" } : {})}
                       >
-                        GitHub
-                      </a>
-                    ) : null}
-                    {project.link ? (
-                      <a
-                        className="inline-flex items-center justify-center rounded-md border border-neutral-200 bg-white px-3 py-1.5 text-sm font-medium text-neutral-900 transition-colors hover:bg-neutral-50 dark:border-neutral-800 dark:bg-neutral-950 dark:text-neutral-100 dark:hover:bg-neutral-900 hover-lift"
-                        href={project.link.href}
-                        target="_blank"
-                        rel="noopener noreferrer"
-                      >
-                        {project.link.label}
+                        Learn More
                       </a>
                     ) : null}
                   </div>
