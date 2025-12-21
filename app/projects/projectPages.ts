@@ -157,13 +157,13 @@ export const projectPages: ProjectPage[] = [
       },
       { 
         type: 'image',
-        src: '/images/notion-templates/life-os.png',
+        src: '/images/notion-templates/life-OS.png',
         alt: 'Life OS Notion Template',
         caption: 'Life OS Notion Template - A comprehensive life management system built for Notion.',
       },
       { 
         type: 'image',
-        src: '/images/notion-templates/stem-project-hub.png',
+        src: '/images/notion-templates/STEM-project-hub.png',
         alt: 'STEM Project Hub Notion Template',
         caption: 'STEM Project Hub Notion Template - A collaborative workspace tailored for STEM students and teams.',
       },
