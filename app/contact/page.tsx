@@ -6,7 +6,7 @@ export const metadata: Metadata = {
     'Contact Paul Savvas — reach out about projects, collaboration, or questions.',
 };
 
-const emailAddressPlaceholder = 'resume@paulsavvas.me';
+const emailAddressPlaceholder = 'hello@paulsavvas.me';
 const githubProfileUrl = 'https://github.com/psavvas';
 const linkedinProfileUrl = 'https://linkedin.com/in/pauldsavvas';
 const gravatarProfileUrl = 'https://gravatar.com/avatar/paulsavvas';

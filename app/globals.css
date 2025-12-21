@@ -433,6 +433,9 @@ html.dark .hero {
   border-radius: 12px;
   padding: 12px 14px;
 }
+.hero .meta-block--full {
+  grid-column: 1 / -1;
+}
 
 .hero .meta-block .label {
   text-transform: uppercase;
