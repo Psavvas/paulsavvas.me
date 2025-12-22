@@ -59,20 +59,27 @@ export function useMDXComponents(components: MDXComponents): MDXComponents {
         {children}
       </pre>
     ),
-    img: (props) => (
-      <Image
-        width={800}
-        height={600}
-        className="w-full rounded-lg border border-neutral-200 dark:border-neutral-800"
-        {...(props as any)}
-      />
-    ),
-    iframe: (props) => (
-      <iframe
-        {...(props as any)}
-        className={`w-full aspect-video rounded-lg border border-neutral-200 dark:border-neutral-800 ${props.className || ''}`}
-      />
-    ),
+    img: (props) => {
+      const { src, alt } = props as { src?: string; alt?: string };
+      return (
+        <Image
+          src={src || ''}
+          alt={alt || ''}
+          width={800}
+          height={600}
+          className="w-full rounded-lg border border-neutral-200 dark:border-neutral-800"
+        />
+      );
+    },
+    iframe: (props) => {
+      const { className, ...rest } = props as React.IframeHTMLAttributes<HTMLIFrameElement>;
+      return (
+        <iframe
+          {...rest}
+          className={`w-full aspect-video rounded-lg border border-neutral-200 dark:border-neutral-800 ${className || ''}`}
+        />
+      );
+    },
     div: ({ children, ...props }) => (
       <div {...props}>{children}</div>
     ),

@@ -52,7 +52,7 @@ export function getBlogPostBySlug(slug: string): BlogPostWithContent | null {
       tags: data.tags,
       content,
     };
-  } catch (error) {
+  } catch {
     return null;
   }
 }

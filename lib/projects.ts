@@ -61,7 +61,7 @@ export function getProjectBySlug(slug: string): ProjectPageWithContent | null {
       links: data.links,
       content,
     };
-  } catch (error) {
+  } catch {
     return null;
   }
 }
