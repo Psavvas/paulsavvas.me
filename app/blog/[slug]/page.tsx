@@ -1,12 +1,19 @@
 import type { Metadata } from 'next';
 import Link from 'next/link';
 import { notFound } from 'next/navigation';
-import { getBlogPostBySlug } from '@/lib/blog';
+import { getBlogPostBySlug, getAllBlogSlugs } from '@/lib/blog';
 import { MDXRemote } from 'next-mdx-remote/rsc';
 
 type BlogPostPageProps = {
   params: Promise<{ slug: string }>;
 };
+
+export async function generateStaticParams() {
+  const slugs = getAllBlogSlugs();
+  return slugs.map((slug) => ({
+    slug,
+  }));
+}
 
 export async function generateMetadata({
   params,

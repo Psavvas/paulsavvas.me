@@ -1,12 +1,19 @@
 import type { Metadata } from 'next';
 import Link from 'next/link';
 import { notFound } from 'next/navigation';
-import { getProjectBySlug } from '@/lib/projects';
+import { getProjectBySlug, getAllProjectSlugs } from '@/lib/projects';
 import { MDXRemote } from 'next-mdx-remote/rsc';
 
 type ProjectPageProps = {
   params: Promise<{ slug: string }>;
 };
+
+export async function generateStaticParams() {
+  const slugs = getAllProjectSlugs();
+  return slugs.map((slug) => ({
+    slug,
+  }));
+}
 
 export async function generateMetadata({
   params,
