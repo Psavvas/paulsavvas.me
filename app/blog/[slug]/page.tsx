@@ -1,7 +1,8 @@
 import type { Metadata } from 'next';
 import Link from 'next/link';
 import { notFound } from 'next/navigation';
-import { findPostBySlug } from '../posts';
+import { getBlogPostBySlug } from '@/lib/blog';
+import { MDXRemote } from 'next-mdx-remote/rsc';
 
 type BlogPostPageProps = {
   params: Promise<{ slug: string }>;
@@ -11,7 +12,7 @@ export async function generateMetadata({
   params,
 }: BlogPostPageProps): Promise<Metadata> {
   const { slug } = await params;
-  const post = findPostBySlug(slug);
+  const post = getBlogPostBySlug(slug);
 
   if (!post) {
     return {
@@ -27,7 +28,7 @@ export async function generateMetadata({
 
 export default async function BlogPostPage({ params }: BlogPostPageProps) {
   const { slug } = await params;
-  const post = findPostBySlug(slug);
+  const post = getBlogPostBySlug(slug);
 
   if (!post) notFound();
 
@@ -67,15 +68,8 @@ export default async function BlogPostPage({ params }: BlogPostPageProps) {
             ) : null}
           </header>
 
-          <article className="mt-10 space-y-5 animate-fade-in-up">
-            {post.content.map((paragraph) => (
-              <p
-                key={paragraph}
-                className="text-base leading-7 text-neutral-700 dark:text-neutral-300"
-              >
-                {paragraph}
-              </p>
-            ))}
+          <article className="mt-10 space-y-5 animate-fade-in-up prose prose-neutral dark:prose-invert max-w-none">
+            <MDXRemote source={post.content} />
           </article>
         </div>
       </main>

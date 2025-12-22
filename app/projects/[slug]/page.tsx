@@ -1,8 +1,8 @@
 import type { Metadata } from 'next';
 import Link from 'next/link';
-import Image from 'next/image';
 import { notFound } from 'next/navigation';
-import { findProjectPageBySlug } from '../projectPages';
+import { getProjectBySlug } from '@/lib/projects';
+import { MDXRemote } from 'next-mdx-remote/rsc';
 
 type ProjectPageProps = {
   params: Promise<{ slug: string }>;
@@ -12,7 +12,7 @@ export async function generateMetadata({
   params,
 }: ProjectPageProps): Promise<Metadata> {
   const { slug } = await params;
-  const project = findProjectPageBySlug(slug);
+  const project = getProjectBySlug(slug);
 
   if (!project) {
     return {
@@ -28,7 +28,7 @@ export async function generateMetadata({
 
 export default async function ProjectPage({ params }: ProjectPageProps) {
   const { slug } = await params;
-  const project = findProjectPageBySlug(slug);
+  const project = getProjectBySlug(slug);
 
   if (!project) notFound();
 
@@ -108,121 +108,8 @@ export default async function ProjectPage({ params }: ProjectPageProps) {
             ) : null}
           </header>
 
-          <article className="mt-12 space-y-8 animate-fade-in-up">
-            {project.sections.map((section, index) => {
-              if (section.type === 'heading') {
-                const HeadingTag = section.level === 2 ? 'h2' : 'h3';
-                const headingClass =
-                  section.level === 2
-                    ? 'text-2xl font-semibold tracking-tight text-neutral-900 dark:text-neutral-100'
-                    : 'text-xl font-semibold tracking-tight text-neutral-900 dark:text-neutral-100';
-                return (
-                  <HeadingTag key={index} className={headingClass}>
-                    {section.content}
-                  </HeadingTag>
-                );
-              }
-
-              if (section.type === 'text') {
-                const paragraphs = Array.isArray(section.content)
-                  ? section.content
-                  : [section.content];
-                return (
-                  <div key={index} className="space-y-4">
-                    {paragraphs.map((paragraph, pIndex) => (
-                      <p
-                        key={pIndex}
-                        className="text-base leading-7 text-neutral-700 dark:text-neutral-300"
-                      >
-                        {paragraph}
-                      </p>
-                    ))}
-                  </div>
-                );
-              }
-
-              if (section.type === 'image') {
-                return (
-                  <figure key={index} className="my-8">
-                    <Image
-                      src={section.src || ''}
-                      alt={section.alt || ''}
-                      width={800}
-                      height={600}
-                      className="w-full rounded-lg border border-neutral-200 dark:border-neutral-800"
-                    />
-                    {section.caption ? (
-                      <figcaption className="mt-3 text-center text-sm text-neutral-600 dark:text-neutral-400">
-                        {section.caption}
-                      </figcaption>
-                    ) : null}
-                  </figure>
-                );
-              }
-
-              if (section.type === 'gallery') {
-                return (
-                  <div key={index} className="my-8 grid grid-cols-1 gap-6 md:grid-cols-2">
-                    {section.items?.map((item, itemIndex) => (
-                      <figure key={itemIndex}>
-                        <div className="relative aspect-[4/3] w-full overflow-hidden rounded-lg border border-neutral-200 dark:border-neutral-800">
-                          <Image
-                            src={item.src}
-                            alt={item.alt}
-                            fill
-                            className="object-cover"
-                          />
-                        </div>
-                        {item.caption ? (
-                          <figcaption className="mt-3 text-center text-sm text-neutral-600 dark:text-neutral-400">
-                            {item.caption}
-                          </figcaption>
-                        ) : null}
-                      </figure>
-                    ))}
-                  </div>
-                );
-              }
-
-              if (section.type === 'video') {
-                // YouTube embed
-                const isYouTube = section.src?.includes('youtube.com') || section.src?.includes('youtu.be');
-                if (isYouTube && section.src) {
-                  // Extract video ID from YouTube URL
-                  let videoId = '';
-                  if (section.src.includes('/embed/')) {
-                    // Already an embed URL, extract ID from it
-                    videoId = section.src.split('/embed/')[1]?.split('?')[0] || '';
-                  } else if (section.src.includes('youtu.be/')) {
-                    videoId = section.src.split('youtu.be/')[1]?.split('?')[0] || '';
-                  } else if (section.src.includes('youtube.com')) {
-                    const urlParams = new URLSearchParams(section.src.split('?')[1]);
-                    videoId = urlParams.get('v') || '';
-                  }
-
-                  return (
-                    <figure key={index} className="my-8">
-                      <div className="relative aspect-video w-full overflow-hidden rounded-lg border border-neutral-200 dark:border-neutral-800">
-                        <iframe
-                          src={`https://www.youtube.com/embed/${videoId}`}
-                          title={section.alt || 'YouTube video'}
-                          allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-                          allowFullScreen
-                          className="absolute inset-0 h-full w-full"
-                        />
-                      </div>
-                      {section.caption ? (
-                        <figcaption className="mt-3 text-center text-sm text-neutral-600 dark:text-neutral-400">
-                          {section.caption}
-                        </figcaption>
-                      ) : null}
-                    </figure>
-                  );
-                }
-              }
-
-              return null;
-            })}
+          <article className="mt-12 space-y-8 animate-fade-in-up prose prose-neutral dark:prose-invert max-w-none">
+            <MDXRemote source={project.content} />
           </article>
         </div>
       </main>
