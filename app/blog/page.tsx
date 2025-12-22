@@ -1,6 +1,6 @@
 import type { Metadata } from 'next';
 import Link from 'next/link';
-import { posts } from './posts';
+import { getAllBlogPosts } from '@/lib/blog';
 
 export const metadata: Metadata = {
   title: 'Blog | Paul Savvas',
@@ -9,6 +9,8 @@ export const metadata: Metadata = {
 };
 
 export default function BlogPage() {
+  const posts = getAllBlogPosts();
+  
   return (
     <div className="min-h-screen bg-zinc-50 font-sans dark:bg-neutral-950 transition-colors">
       <main className="mx-auto w-full max-w-6xl bg-white px-6 py-16 dark:bg-neutral-950 sm:px-16 sm:py-24 animate-fade-in">
