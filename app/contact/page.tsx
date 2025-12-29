@@ -9,7 +9,7 @@ export const metadata: Metadata = {
 const emailAddressPlaceholder = 'hello@paulsavvas.me';
 const githubProfileUrl = 'https://github.com/psavvas';
 const linkedinProfileUrl = 'https://linkedin.com/in/pauldsavvas';
-const gravatarProfileUrl = 'https://gravatar.com/avatar/paulsavvas';
+const gravatarProfileUrl = 'https://gravatar.com/paulsavvas';
 const thingiverseProfileUrl = 'https://thingiverse.com/psavvas';
 const contactFormUrl = 'https://psavvas.notion.site/15770b9af471809da736d4e77a090ce0';
 
