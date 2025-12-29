@@ -15,6 +15,7 @@ export const REDIRECTS: Record<RedirectSlug, string> = {
   gravatar: 'https://www.gravatar.com/avatar/paulsavvas',
   github: 'https://github.com/psavvas',
   thingiverse: 'https://www.thingiverse.com/psavvas',
+  savvas3dprinting: 'https://psavvas.notion.site/savvas-3d-printing',
 };
 
 export function resolveRedirectDestination(options: {
