@@ -59,6 +59,15 @@ function getLearnMoreUrl(project: Project): { url: string; isExternal: boolean }
 
 const projects: Project[] = [
   {
+    title: 'InfantGuard',
+    summary:
+      'Infant Guard is a fully integrated, Arduino-driven safety platform engineered to detect forgotten infants in vehicles and escalate alerts before temperatures reach life-threatening levels.',
+    tags: ['Arduino', 'IoT', 'Safety', 'Hardware'],
+    year: ['2025'],
+    featured: true,
+    projectPage: 'infantguard',
+  },
+  {
     title: 'Personal Portfolio Website',
     summary:
       'This website! Built with Next.js and Tailwind CSS, it showcases my projects, skills, and contact information in a clean and modern design.',
@@ -75,15 +84,6 @@ const projects: Project[] = [
     year: ['2025'],
     featured: true,
     repo: 'psavvas/daily-digest',
-  },
-  {
-    title: 'InfantGuard',
-    summary:
-      'Infant Guard is a fully integrated, Arduino-driven safety platform engineered to detect forgotten infants in vehicles and escalate alerts before temperatures reach life-threatening levels.',
-    tags: ['Arduino', 'IoT', 'Safety', 'Hardware'],
-    year: ['2025'],
-    featured: true,
-    projectPage: 'infantguard',
   },
   {
     title: 'MoleMini',
