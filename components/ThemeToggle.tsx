@@ -54,8 +54,8 @@ export default function ThemeToggle() {
           />
         </svg>
       );
-    } else if (resolvedTheme === 'dark') {
-      // Sun icon for dark mode (clicking will switch to light)
+    } else if (theme === 'dark') {
+      // Sun icon for dark mode (clicking will switch to system)
       return (
         <svg
           xmlns="http://www.w3.org/2000/svg"
@@ -97,8 +97,8 @@ export default function ThemeToggle() {
     <button
       onClick={cycleTheme}
       className="group rounded-lg p-2 transition-all duration-300 hover:bg-neutral-100 dark:hover:bg-neutral-800 hover:scale-110"
-      aria-label={`Current theme: ${theme}. Click to cycle themes.`}
-      title={`Current: ${theme} | Click to cycle: Light → Dark → System`}
+      aria-label={`Current theme: ${theme || 'system'}. Click to cycle themes.`}
+      title={`Current: ${theme || 'system'} | Click to cycle: Light → Dark → System`}
     >
       {getIcon()}
     </button>
