@@ -70,11 +70,20 @@ const projects: Project[] = [
   {
     title: 'Daily Digest',
     summary:
-      'I’m actively cleaning up repos and turning the best builds into clear, repeatable write-ups — goals, constraints, results, and what I’d improve next.',
+      'DailyDigest is a Python application that automatically generates and sends a daily summary email containing your upcoming calendar events, reminders, local weather, and a motivational quote.',
     tags: ['Productivity', 'Coding', 'Python Scripts'],
     year: ['2025'],
     featured: true,
     repo: 'psavvas/daily-digest',
+  },
+  {
+    title: 'InfantGuard',
+    summary:
+      'Infant Guard is a fully integrated, Arduino-driven safety platform engineered to detect forgotten infants in vehicles and escalate alerts before temperatures reach life-threatening levels.',
+    tags: ['Arduino', 'IoT', 'Safety', 'Hardware'],
+    year: ['2025'],
+    featured: true,
+    projectPage: 'infantguard',
   },
   {
     title: 'MoleMini',
@@ -82,7 +91,7 @@ const projects: Project[] = [
       'Mole Mini is an all-in-one chemistry computer helping with complex calculations and conversions, created by myself and Connor Denihan in 2025.',
     tags: ['Microcomputer', 'Chemistry', 'Education'],
     year: ['2025'],
-    featured: true,
+    featured: false,
     repo: 'cdenihan/mole-day-project',
   },
   {
