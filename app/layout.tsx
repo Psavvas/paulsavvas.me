@@ -51,15 +51,15 @@ export default function RootLayout({
         <meta httpEquiv="x-ua-compatible" content="IE=edge" />
         <link
           rel="icon"
-          href="/favicon-light.png"
+          href="/favicon-light.svg"
           media="(prefers-color-scheme: light)"
         />
         <link
           rel="icon"
-          href="/favicon-dark.png"
+          href="/favicon-dark.svg"
           media="(prefers-color-scheme: dark)"
         />
-        <link rel="icon" href="/favicon-light.png" />
+        <link rel="icon" href="/favicon-light.svg" />
       </head>
       <body
         className={`${geistSans.variable} ${geistMono.variable} antialiased`}
