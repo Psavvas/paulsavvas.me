@@ -33,9 +33,6 @@ export const metadata: Metadata = {
     title: 'Paul Savvas',
     description: 'Student, Engineer, Developer and Leader',
   },
-  icons: {
-    icon: '/icon.svg',
-  },
 };
 
 export default function RootLayout({
@@ -52,6 +49,17 @@ export default function RootLayout({
           content="width=device-width, initial-scale=1, maximum-scale=5"
         />
         <meta httpEquiv="x-ua-compatible" content="IE=edge" />
+        <link
+          rel="icon"
+          href="/favicon-light.png"
+          media="(prefers-color-scheme: light)"
+        />
+        <link
+          rel="icon"
+          href="/favicon-dark.png"
+          media="(prefers-color-scheme: dark)"
+        />
+        <link rel="icon" href="/favicon-light.png" />
       </head>
       <body
         className={`${geistSans.variable} ${geistMono.variable} antialiased`}
