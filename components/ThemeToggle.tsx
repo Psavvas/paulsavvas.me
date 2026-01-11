@@ -35,6 +35,18 @@ export default function ThemeToggle() {
     };
   }, [isOpen]);
 
+  // Handle keyboard navigation
+  const handleKeyDown = (event: React.KeyboardEvent) => {
+    if (event.key === 'Escape') {
+      setIsOpen(false);
+    } else if (event.key === 'ArrowDown' || event.key === 'ArrowUp') {
+      event.preventDefault();
+      if (!isOpen) {
+        setIsOpen(true);
+      }
+    }
+  };
+
   if (!isMounted) {
     return (
       <button
@@ -172,15 +184,21 @@ export default function ThemeToggle() {
     <div className="relative" ref={dropdownRef}>
       <button
         onClick={() => setIsOpen(!isOpen)}
+        onKeyDown={handleKeyDown}
         className="group rounded-lg p-2 transition-all duration-300 hover:bg-neutral-100 dark:hover:bg-neutral-800 hover:scale-110"
         aria-label={`Current theme: ${theme}. Click to open theme selector.`}
         aria-expanded={isOpen}
+        aria-haspopup="menu"
       >
         {getIcon()}
       </button>
 
       {isOpen && (
-        <div className="absolute right-0 mt-2 w-36 rounded-lg border border-neutral-200 dark:border-neutral-800 bg-white dark:bg-neutral-900 shadow-lg overflow-hidden animate-fade-in z-50">
+        <div 
+          className="absolute right-0 mt-2 w-36 rounded-lg border border-neutral-200 dark:border-neutral-800 bg-white dark:bg-neutral-900 shadow-lg overflow-hidden animate-fade-in z-50"
+          role="menu"
+          aria-label="Theme selection menu"
+        >
           {themes.map((themeOption) => (
             <button
               key={themeOption.value}
@@ -188,12 +206,19 @@ export default function ThemeToggle() {
                 setTheme(themeOption.value);
                 setIsOpen(false);
               }}
+              onKeyDown={(e) => {
+                if (e.key === 'Escape') {
+                  setIsOpen(false);
+                }
+              }}
               className={`w-full flex items-center gap-3 px-4 py-2.5 text-sm transition-colors ${
                 theme === themeOption.value
                   ? 'bg-neutral-100 dark:bg-neutral-800 text-neutral-900 dark:text-neutral-100 font-medium'
                   : 'text-neutral-600 dark:text-neutral-400 hover:bg-neutral-50 dark:hover:bg-neutral-800/50 hover:text-neutral-900 dark:hover:text-neutral-100'
               }`}
+              role="menuitem"
               aria-label={`Switch to ${themeOption.name} theme`}
+              aria-current={theme === themeOption.value ? 'true' : undefined}
             >
               <span className="text-neutral-900 dark:text-neutral-100">
                 {themeOption.icon}
