@@ -33,9 +33,6 @@ export const metadata: Metadata = {
     title: 'Paul Savvas',
     description: 'Student, Engineer, Developer and Leader',
   },
-  icons: {
-    icon: '/icon.svg',
-  },
 };
 
 export default function RootLayout({
@@ -52,6 +49,17 @@ export default function RootLayout({
           content="width=device-width, initial-scale=1, maximum-scale=5"
         />
         <meta httpEquiv="x-ua-compatible" content="IE=edge" />
+        <link
+          rel="icon"
+          href="/favicon-light.svg"
+          media="(prefers-color-scheme: light)"
+        />
+        <link
+          rel="icon"
+          href="/favicon-dark.svg"
+          media="(prefers-color-scheme: dark)"
+        />
+        <link rel="icon" href="/favicon-light.svg" />
       </head>
       <body
         className={`${geistSans.variable} ${geistMono.variable} antialiased`}
@@ -62,11 +70,6 @@ export default function RootLayout({
           enableSystem
           enableColorScheme
         >
-          <div className="bg-blue-500 px-4 py-3 text-center text-sm font-medium text-blue-950 dark:bg-blue-600 dark:text-blue-50">
-            <p>
-              ✨ Newly redesigned with <strong>Next.js</strong> — faster loading, better SEO, and improved performance. Same content, fresh look! ✨
-            </p>
-          </div>
           <Navbar />
           {children}
           <Footer />
