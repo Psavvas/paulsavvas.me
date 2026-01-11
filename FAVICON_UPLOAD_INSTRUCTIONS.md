@@ -10,13 +10,16 @@ To complete the dynamic favicon setup (light/dark mode support), please upload y
 1. `favicon-light.png` - This will be displayed when the user's system is in light mode
 2. `favicon-dark.png` - This will be displayed when the user's system is in dark mode
 
+**Important:** Until these files are uploaded, the browser will show 404 errors for the missing favicons. This is expected behavior and will be resolved once you upload the files to the `/public/` directory.
+
 ## File Requirements
 
-- **Format:** PNG (recommended) or ICO
+- **Format:** PNG (required for this implementation)
 - **Size:** 32x32 pixels or 64x64 pixels (standard favicon sizes)
 - **Naming:** 
   - Light mode favicon: Must be named exactly `favicon-light.png`
   - Dark mode favicon: Must be named exactly `favicon-dark.png`
+- **Note:** The files must be PNG format with the `.png` extension. If you have ICO files, you'll need to convert them to PNG first or update the implementation to reference `.ico` files instead.
 
 ## How to Upload
 
