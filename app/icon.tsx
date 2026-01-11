@@ -21,7 +21,7 @@ export default function Icon() {
         background: '#ffffff',
         color: '#171717',
         fontSize: 30,
-        fontWeight: 2000,
+        fontWeight: 900,
         letterSpacing: '-0.75px',
         lineHeight: 1,
         fontFamily: 'Arial Black, Arial, Helvetica, sans-serif',
