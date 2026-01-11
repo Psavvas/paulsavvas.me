@@ -5,7 +5,7 @@ import { useEffect, useState } from 'react';
 
 export default function ThemeToggle() {
   const [isMounted, setIsMounted] = useState(false);
-  const { theme, setTheme, resolvedTheme } = useTheme();
+  const { theme, setTheme } = useTheme();
 
   // useEffect only runs on the client, so now we can safely show the UI
   useEffect(() => {
@@ -97,8 +97,8 @@ export default function ThemeToggle() {
     <button
       onClick={cycleTheme}
       className="group rounded-lg p-2 transition-all duration-300 hover:bg-neutral-100 dark:hover:bg-neutral-800 hover:scale-110"
-      aria-label={`Current theme: ${theme || 'system'}. Click to cycle themes.`}
-      title={`Current: ${theme || 'system'} | Click to cycle: Light → Dark → System`}
+      aria-label={`Current theme: ${theme}. Click to cycle themes.`}
+      title={`Current: ${theme} | Click to cycle: Light → Dark → System`}
     >
       {getIcon()}
     </button>
