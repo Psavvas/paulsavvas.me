@@ -14,20 +14,24 @@ To complete the dynamic favicon setup (light/dark mode support), please upload y
 
 ## File Requirements
 
-- **Format:** PNG (required for this implementation)
-- **Size:** 32x32 pixels or 64x64 pixels (standard favicon sizes)
+- **Format:** PNG or SVG (both are supported)
+- **Size:** 
+  - PNG: 32x32 or 64x64 pixels (standard favicon sizes)
+  - SVG: Any size (vector graphics scale automatically)
 - **Naming:** 
-  - Light mode favicon: Must be named exactly `favicon-light.png`
-  - Dark mode favicon: Must be named exactly `favicon-dark.png`
-- **Note:** The files must be PNG format with the `.png` extension. If you have ICO files, you'll need to convert them to PNG first or update the implementation to reference `.ico` files instead.
+  - Light mode favicon: `favicon-light.png` or `favicon-light.svg`
+  - Dark mode favicon: `favicon-dark.png` or `favicon-dark.svg`
+  - **Important:** Both files must use the same format (both PNG or both SVG)
+- **Note:** SVG is recommended for favicons as they scale perfectly at any size and usually have smaller file sizes. If you upload SVG files, you'll need to update the file extensions in `app/layout.tsx` from `.png` to `.svg`.
 
 ## How to Upload
 
 1. Navigate to the `public` directory in your repository
 2. Upload or copy your two favicon files:
-   - `favicon-light.png`
-   - `favicon-dark.png`
-3. Commit the files to the repository
+   - For PNG: `favicon-light.png` and `favicon-dark.png`
+   - For SVG: `favicon-light.svg` and `favicon-dark.svg`
+3. If using SVG, update the file extensions in `app/layout.tsx` (change `.png` to `.svg` in the three favicon link tags)
+4. Commit the files to the repository
 
 ## How It Works
 
@@ -42,9 +46,15 @@ The website is now configured to automatically switch between favicons based on 
 The implementation uses media queries in the HTML `<link>` tags:
 
 ```html
+<!-- For PNG files (current default): -->
 <link rel="icon" href="/favicon-light.png" media="(prefers-color-scheme: light)" />
 <link rel="icon" href="/favicon-dark.png" media="(prefers-color-scheme: dark)" />
 <link rel="icon" href="/favicon-light.png" /> <!-- fallback -->
+
+<!-- For SVG files (change .png to .svg in app/layout.tsx): -->
+<link rel="icon" href="/favicon-light.svg" media="(prefers-color-scheme: light)" />
+<link rel="icon" href="/favicon-dark.svg" media="(prefers-color-scheme: dark)" />
+<link rel="icon" href="/favicon-light.svg" /> <!-- fallback -->
 ```
 
-This approach is supported by all modern browsers and will automatically respond to system theme changes.
+This approach is supported by all modern browsers and will automatically respond to system theme changes. SVG favicons are well-supported in modern browsers and provide the best quality at any size.

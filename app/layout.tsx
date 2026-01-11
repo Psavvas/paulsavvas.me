@@ -70,11 +70,6 @@ export default function RootLayout({
           enableSystem
           enableColorScheme
         >
-          <div className="bg-blue-500 px-4 py-3 text-center text-sm font-medium text-blue-950 dark:bg-blue-600 dark:text-blue-50">
-            <p>
-              ✨ Newly redesigned with <strong>Next.js</strong> — faster loading, better SEO, and improved performance. Same content, fresh look! ✨
-            </p>
-          </div>
           <Navbar />
           {children}
           <Footer />
