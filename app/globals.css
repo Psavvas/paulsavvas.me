@@ -172,7 +172,7 @@ body {
 .hero {
   /* Light theme defaults */
   --hero-surface: #ffffff;
-  --hero-panel: #f1f5f9;
+  --hero-panel: #ffffff;
   --hero-muted: #556070;
   --hero-text: #0f172a;
   --hero-border: rgba(15, 23, 42, 0.12);

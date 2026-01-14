@@ -40,7 +40,7 @@ export default async function BlogPostPage({ params }: BlogPostPageProps) {
   if (!post) notFound();
 
   return (
-    <div className="min-h-screen bg-zinc-50 font-sans dark:bg-neutral-950 transition-colors">
+    <div className="min-h-screen bg-white font-sans dark:bg-neutral-950 transition-colors">
       <main className="mx-auto w-full max-w-6xl bg-white px-6 py-16 dark:bg-neutral-950 sm:px-16 sm:py-24 animate-fade-in">
         <div className="max-w-3xl">
           <Link

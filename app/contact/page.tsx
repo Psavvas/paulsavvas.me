@@ -15,7 +15,7 @@ const contactFormUrl = 'https://psavvas.notion.site/15770b9af471809da736d4e77a09
 
 export default function ContactPage() {
   return (
-    <div className="min-h-screen bg-zinc-50 font-sans dark:bg-neutral-950 transition-colors">
+    <div className="min-h-screen bg-white font-sans dark:bg-neutral-950 transition-colors">
       <main className="mx-auto w-full max-w-6xl bg-white px-6 py-16 dark:bg-neutral-950 sm:px-16 sm:py-24 animate-fade-in">
         <header className="max-w-3xl animate-fade-in-up">
           <p className="text-sm font-medium uppercase tracking-wider text-neutral-600 dark:text-neutral-400">

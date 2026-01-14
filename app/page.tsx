@@ -1,6 +1,6 @@
 export default function HomePage() {
   return (
-    <div className="min-h-screen bg-zinc-50 font-sans dark:bg-neutral-950 transition-colors">
+    <div className="min-h-screen bg-white font-sans dark:bg-neutral-950 transition-colors">
       <main className="mx-auto flex w-full max-w-6xl flex-col gap-16 bg-white px-6 py-24 dark:bg-neutral-950 sm:px-16 sm:py-32 animate-fade-in">
         <section className="hero">
           <div className="container hero-grid">
