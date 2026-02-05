@@ -1,0 +1,35 @@
+---
+// Inline script to prevent flash of unstyled content
+---
+
+<script is:inline>
+  const storageKey = 'site-theme-preference';
+  const mediaQuery = '(prefers-color-scheme: dark)';
+  
+  const determineTheme = () => {
+    const stored = localStorage.getItem(storageKey);
+    if (stored === 'dark' || stored === 'light') return stored;
+    return window.matchMedia(mediaQuery).matches ? 'dark' : 'light';
+  };
+  
+  const applyTheme = (selectedTheme) => {
+    if (selectedTheme === 'dark') {
+      document.documentElement.classList.add('dark');
+    } else {
+      document.documentElement.classList.remove('dark');
+    }
+  };
+  
+  const currentTheme = determineTheme();
+  applyTheme(currentTheme);
+  
+  window.addEventListener('DOMContentLoaded', () => {
+    const systemMediaQuery = window.matchMedia(mediaQuery);
+    systemMediaQuery.addEventListener('change', (event) => {
+      const stored = localStorage.getItem(storageKey);
+      if (!stored || stored === 'system') {
+        applyTheme(event.matches ? 'dark' : 'light');
+      }
+    });
+  });
+</script>
