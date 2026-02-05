@@ -1,0 +1,25 @@
+---
+import type { GetStaticPaths } from 'astro';
+
+export const getStaticPaths = (() => {
+  const urlMappings = {
+    example: 'https://example.com',
+    infantguard: '/projects/infantguard',
+    contact: 'https://psavvas.notion.site/15770b9af471809da736d4e77a090ce0',
+    linkedin: 'https://www.linkedin.com/in/pauldsavvas',
+    gravatar: 'https://www.gravatar.com/avatar/paulsavvas',
+    github: 'https://github.com/psavvas',
+    thingiverse: 'https://www.thingiverse.com/psavvas',
+    savvas3dprinting: 'https://psavvas.notion.site/savvas-3d-printing',
+  };
+  
+  return Object.entries(urlMappings).map(([key, url]) => ({
+    params: { slug: key },
+    props: { redirectUrl: url },
+  }));
+}) satisfies GetStaticPaths;
+
+const { redirectUrl } = Astro.props;
+
+return Astro.redirect(redirectUrl, 308);
+---

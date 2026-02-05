@@ -1,0 +1,47 @@
+---
+import ThemeToggle from './ThemeToggle';
+
+const navLinks = [
+  { label: 'Home', path: '/' },
+  { label: 'About', path: '/about' },
+  { label: 'Projects', path: '/projects' },
+  { label: 'Blog', path: '/blog' },
+  { label: 'Contact', path: '/contact' },
+];
+
+const currentPath = Astro.url.pathname;
+---
+
+<header class="sticky top-0 z-50 border-b border-neutral-200 dark:border-neutral-800 bg-white/80 dark:bg-neutral-950/80 backdrop-blur transition-colors">
+  <nav class="mx-auto grid h-16 md:h-14 max-w-6xl grid-cols-3 items-center px-4 sm:px-6">
+    <div class="flex items-center">
+      <a
+        href="/"
+        class="inline-flex h-10 md:h-8 items-center text-lg font-semibold tracking-tight text-neutral-900 dark:text-neutral-100 transition-colors shrink-0 leading-none animate-slide-in-left"
+      >
+        PS
+      </a>
+    </div>
+
+    <div class="flex items-center justify-center animate-fade-in-up animation-delay-100">
+      <ul class="flex items-center gap-3 sm:gap-6">
+        {navLinks.map((item) => (
+          <li class="flex">
+            <a
+              href={item.path}
+              class="inline-flex h-10 md:h-8 items-center text-sm font-medium text-neutral-600 dark:text-neutral-400 transition-colors hover:text-neutral-900 dark:hover:text-neutral-100 leading-none"
+            >
+              {item.label}
+            </a>
+          </li>
+        ))}
+      </ul>
+    </div>
+    
+    <div class="flex items-center justify-end">
+      <div class="inline-flex h-10 md:h-8 items-center animate-slide-in-right animation-delay-100">
+        <ThemeToggle client:load />
+      </div>
+    </div>
+  </nav>
+</header>
