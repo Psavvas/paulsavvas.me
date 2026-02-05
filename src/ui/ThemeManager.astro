@@ -1,0 +1,35 @@
+<script is:inline>
+  // Theme initialization script - runs before page render
+  (function() {
+    const storageKey = 'site-theme-preference';
+    const themeAttr = 'class';
+    
+    function applyThemeClass(themeValue) {
+      const htmlEl = document.documentElement;
+      if (themeValue === 'dark') {
+        htmlEl.classList.add('dark');
+      } else if (themeValue === 'light') {
+        htmlEl.classList.remove('dark');
+      } else {
+        // system preference
+        const prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
+        if (prefersDark) {
+          htmlEl.classList.add('dark');
+        } else {
+          htmlEl.classList.remove('dark');
+        }
+      }
+    }
+    
+    const storedTheme = localStorage.getItem(storageKey);
+    applyThemeClass(storedTheme || 'system');
+    
+    // Listen for system preference changes
+    window.matchMedia('(prefers-color-scheme: dark)').addEventListener('change', function() {
+      const currentTheme = localStorage.getItem(storageKey);
+      if (!currentTheme || currentTheme === 'system') {
+        applyThemeClass('system');
+      }
+    });
+  })();
+</script>

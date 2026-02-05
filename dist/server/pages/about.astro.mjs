@@ -1,0 +1,85 @@
+import { c as createComponent, r as renderComponent, a as renderTemplate, m as maybeRenderHead } from '../chunks/astro/server_fhXJnTM4.mjs';
+import { $ as $$SiteLayout } from '../chunks/SiteLayout_I12kLRtD.mjs';
+export { renderers } from '../renderers.mjs';
+
+const $$About = createComponent(($$result, $$props, $$slots) => {
+  return renderTemplate`${renderComponent($$result, "SiteLayout", $$SiteLayout, { "pageTitle": "About", "pageDescription": "About Paul Savvas \u2014 student engineer building practical tools across software, hardware, and 3D design." }, { "default": ($$result2) => renderTemplate` ${maybeRenderHead()}<div class="min-h-screen bg-white font-sans dark:bg-neutral-950 transition-colors"> <main class="mx-auto w-full max-w-6xl bg-white px-6 py-16 dark:bg-neutral-950 sm:px-16 sm:py-24 animate-fade-in"> <header class="max-w-3xl animate-fade-in-up"> <p class="text-sm font-medium uppercase tracking-wider text-neutral-600 dark:text-neutral-400">
+About
+</p> <h1 class="mt-3 text-4xl font-semibold tracking-tight text-neutral-900 dark:text-neutral-100 sm:text-5xl">
+Building practical tools, thoughtfully.
+</h1> <p class="mt-6 text-base leading-7 text-neutral-700 dark:text-neutral-300">
+I'm Paul Savvas — a student at the SMCPS STEM Academy (Grade 10)
+          who enjoys turning ideas into real, working things. I like projects
+          where engineering and design meet: clear constraints, measurable
+          results, and details that hold up outside a demo.
+</p> <p class="mt-4 text-base leading-7 text-neutral-700 dark:text-neutral-300">
+Most of my projects start with failure — circuits that don't work,
+          code that breaks, prints that warp. I treat those setbacks as data:
+          they show what needs fixing. Through CAD design, programming, and
+          hardware builds, I've learned that progress comes from testing
+          assumptions early and iterating until the solution works reliably.
+</p> <p class="mt-4 text-base leading-7 text-neutral-700 dark:text-neutral-300">
+Alongside my projects, I maintain straight A's at the STEM Academy
+          and look for opportunities to help classmates work through technical
+          problems. Leadership, for me, means making sure the people around you
+          have what they need to improve — whether that's clearer documentation,
+          a second perspective, or just accountability to keep moving forward.
+</p> </header> <section class="mt-14 grid gap-10 md:grid-cols-2"> <div class="rounded-xl border border-neutral-200 bg-white p-6 dark:border-neutral-800 dark:bg-neutral-950 hover-lift animate-fade-in-up"> <h2 class="text-lg font-semibold text-neutral-900 dark:text-neutral-100">
+What I care about
+</h2> <ul class="mt-4 space-y-3 text-sm leading-6 text-neutral-700 dark:text-neutral-300"> <li> <span class="font-medium text-neutral-900 dark:text-neutral-100">
+Simplicity:
+</span>${" "}
+reduce complexity until the system is easy to understand.
+</li> <li> <span class="font-medium text-neutral-900 dark:text-neutral-100">
+Durability:
+</span>${" "}
+build things that keep working when conditions change.
+</li> <li> <span class="font-medium text-neutral-900 dark:text-neutral-100">
+Useful output:
+</span>${" "}
+ship tools that solve real problems and improve over time.
+</li> <li> <span class="font-medium text-neutral-900 dark:text-neutral-100">
+Good communication:
+</span>${" "}
+document decisions and make the work easy to collaborate on.
+</li> <li> <span class="font-medium text-neutral-900 dark:text-neutral-100">
+Learning from failure:
+</span>${" "}
+treat setbacks as feedback and use them to refine the approach.
+</li> </ul> </div> <div class="rounded-xl border border-neutral-200 bg-white p-6 dark:border-neutral-800 dark:bg-neutral-950 hover-lift animate-fade-in-up"> <h2 class="text-lg font-semibold text-neutral-900 dark:text-neutral-100">
+What I work on
+</h2> <ul class="mt-4 space-y-3 text-sm leading-6 text-neutral-700 dark:text-neutral-300"> <li>
+Software: small products, utilities, and experiments that are
+              fast to iterate and easy to maintain.
+</li> <li>
+Hardware: practical builds where constraints (power, sensors,
+              materials) shape the solution.
+</li> <li>
+3D design: parts and prototypes that are tested, adjusted, and
+              refined in real conditions.
+</li> </ul> </div> </section> <section class="mt-14 max-w-3xl animate-fade-in-up animation-delay-300"> <h2 class="text-xl font-semibold tracking-tight text-neutral-900 dark:text-neutral-100">
+Now
+</h2> <div class="mt-4 space-y-4 text-base leading-7 text-neutral-700 dark:text-neutral-300"> <p>
+Right now, I'm focused on building InfantGuard an open-source Arduino based vehicle monitoring system that tracks a car's interior temperature and alerts caregivers if it rises to dangerous levels while an infant is present.
+</p> <p>
+If you want to see what I'm working on, the best place to start is my GitHub or Thingiverse.
+</p> </div> <div class="mt-8 flex gap-4"> <a class="inline-flex items-center justify-center rounded-md border border-neutral-200 bg-white px-4 py-2 text-sm font-medium text-neutral-900 transition-colors hover:bg-neutral-50 dark:border-neutral-800 dark:bg-neutral-950 dark:text-neutral-100 dark:hover:bg-neutral-900 hover-lift" href="https://github.com/psavvas" target="_blank" rel="noopener noreferrer">
+Visit GitHub
+</a> <a class="inline-flex items-center justify-center rounded-md border border-neutral-200 bg-white px-4 py-2 text-sm font-medium text-neutral-900 transition-colors hover:bg-neutral-50 dark:border-neutral-800 dark:bg-neutral-950 dark:text-neutral-100 dark:hover:bg-neutral-900 hover-lift" href="https://www.thingiverse.com/psavvas/" target="_blank" rel="noopener noreferrer">
+Visit Thingiverse
+</a> </div> </section> </main> </div> ` })}`;
+}, "/home/runner/work/Personal-Portfolio-Website/Personal-Portfolio-Website/src/pages/about.astro", void 0);
+
+const $$file = "/home/runner/work/Personal-Portfolio-Website/Personal-Portfolio-Website/src/pages/about.astro";
+const $$url = "/about";
+
+const _page = /*#__PURE__*/Object.freeze(/*#__PURE__*/Object.defineProperty({
+  __proto__: null,
+  default: $$About,
+  file: $$file,
+  url: $$url
+}, Symbol.toStringTag, { value: 'Module' }));
+
+const page = () => _page;
+
+export { page };

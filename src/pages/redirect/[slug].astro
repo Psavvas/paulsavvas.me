@@ -1,0 +1,16 @@
+---
+import { redirectMappings } from '../../utils/redirects';
+import RedirectHandler from '../../components/interactive/RedirectHandler';
+
+export function getStaticPaths() {
+  return Object.keys(redirectMappings).map((slug) => ({
+    params: { slug },
+    props: { targetUrl: redirectMappings[slug] },
+  }));
+}
+
+const { slug } = Astro.params;
+const { targetUrl } = Astro.props;
+---
+
+<RedirectHandler slug={slug} targetUrl={targetUrl} client:only="react" />
