@@ -13,12 +13,6 @@ const portfolioConfig = defineConfig({
     tailwindIntegration({ applyBaseStyles: false }),
     mdxIntegration(),
   ],
-  vite: {
-    ssr: {
-      // Bundle next-themes for SSR compatibility
-      noExternal: ['next-themes'],
-    },
-  },
 });
 
 export default portfolioConfig;
