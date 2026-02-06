@@ -157,7 +157,7 @@ const currentYear = new Date().getFullYear();
 
     {/* ── Footer ── */}
     <footer
-      class="w-full border-t border-gray-200 dark:border-neutral-800 transition-colors animate-fade-in-up animation-delay-100"
+      class="w-full border-t border-gray-200 dark:border-neutral-800 transition-colors"
     >
       <div
         class="mx-auto max-w-7xl px-6 py-6 flex flex-col sm:flex-row items-center justify-between text-sm text-gray-500 dark:text-neutral-400"
@@ -233,37 +233,6 @@ const currentYear = new Date().getFullYear();
 
         applyMode(currentMode());
         refreshIcon();
-      })();
-    </script>
-
-    {/* Navbar animation - only on first load */}
-    <script is:inline>
-      (function animateNavbarOnFirstLoad() {
-        // Check if this is the first page load in this session
-        var hasAnimated = sessionStorage.getItem('ps-navbar-animated');
-
-        if (!hasAnimated) {
-          // Mark as animated for the rest of the session
-          sessionStorage.setItem('ps-navbar-animated', 'true');
-
-          // Add animation classes
-          var navbar = document.getElementById('ps-navbar');
-          var brand = document.getElementById('ps-navbar-brand');
-          var links = document.getElementById('ps-navbar-links');
-          var theme = document.getElementById('ps-navbar-theme');
-
-          if (navbar) navbar.classList.add('animate-fade-in');
-          if (brand) brand.classList.add('animate-slide-in-left');
-          if (links) {
-            links.classList.add('animate-fade-in-up', 'animation-delay-100');
-          }
-          if (theme) {
-            theme.classList.add(
-              'animate-slide-in-right',
-              'animation-delay-100'
-            );
-          }
-        }
       })();
     </script>
   </body>

@@ -84,24 +84,30 @@ body {
   }
 }
 
-/* Animation utility classes */
+/* Animation utility classes
+   Set initial opacity to 0 so elements don't flash before animating. */
 .animate-fade-in {
+  opacity: 0;
   animation: fadeIn 0.6s ease-out forwards;
 }
 
 .animate-fade-in-up {
+  opacity: 0;
   animation: fadeInUp 0.6s ease-out forwards;
 }
 
 .animate-slide-in-left {
+  opacity: 0;
   animation: slideInLeft 0.6s ease-out forwards;
 }
 
 .animate-slide-in-right {
+  opacity: 0;
   animation: slideInRight 0.6s ease-out forwards;
 }
 
 .animate-scale-in {
+  opacity: 0;
   animation: scaleIn 0.6s ease-out forwards;
 }
 
