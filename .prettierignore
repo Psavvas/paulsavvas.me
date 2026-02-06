@@ -2,4 +2,6 @@
 build
 coverage
 .idea
-.next
+dist
+.astro
+node_modules
