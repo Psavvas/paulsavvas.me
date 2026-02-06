@@ -1,7 +1,7 @@
 @import 'tailwindcss';
 @plugin '@tailwindcss/typography';
 
-/* Use class-based dark mode so `next-themes` can toggle it. */
+/* Use class-based dark mode so the theme toggle script can switch it. */
 @custom-variant dark (&:where(.dark, .dark *));
 
 :root {

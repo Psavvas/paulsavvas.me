@@ -1,0 +1,165 @@
+---
+import '../styles/globals.css';
+
+interface Props {
+  title: string;
+  description?: string;
+}
+
+const { title, description = 'Paul Savvas — student engineer building practical tools across software, hardware, and 3D design.' } = Astro.props;
+
+const siteUrl = 'https://paulsavvas.me';
+const fullTitle = title.includes('Paul Savvas') ? title : `${title} | Paul Savvas`;
+
+const navEntries = [
+  { label: 'Home', path: '/' },
+  { label: 'About', path: '/about' },
+  { label: 'Projects', path: '/projects' },
+  { label: 'Blog', path: '/blog' },
+  { label: 'Contact', path: '/contact' },
+];
+
+const currentYear = new Date().getFullYear();
+---
+
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>{fullTitle}</title>
+    <meta name="description" content={description} />
+
+    <!-- OpenGraph -->
+    <meta property="og:type" content="website" />
+    <meta property="og:title" content={fullTitle} />
+    <meta property="og:description" content={description} />
+    <meta property="og:url" content={siteUrl} />
+    <meta property="og:site_name" content="Paul Savvas" />
+
+    <!-- Twitter card -->
+    <meta name="twitter:card" content="summary" />
+    <meta name="twitter:title" content={fullTitle} />
+    <meta name="twitter:description" content={description} />
+
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+
+    {/* Inline theme initialisation — runs before paint to avoid flash */}
+    <script is:inline>
+      (function applyStoredTheme() {
+        var stored = localStorage.getItem('ps-theme');
+        var prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
+        var useDark = stored === 'dark' || (stored !== 'light' && prefersDark);
+        document.documentElement.classList.toggle('dark', useDark);
+      })();
+    </script>
+  </head>
+
+  <body>
+    {/* ── Navbar ── */}
+    <header class="sticky top-0 z-50 border-b border-neutral-200 dark:border-neutral-800 bg-white/80 dark:bg-neutral-950/80 backdrop-blur transition-colors animate-fade-in">
+      <nav class="mx-auto grid h-16 md:h-14 max-w-6xl grid-cols-3 items-center px-4 sm:px-6">
+
+        {/* Brand */}
+        <div class="flex items-center">
+          <a
+            href="/"
+            class="inline-flex h-10 md:h-8 items-center text-lg font-semibold tracking-tight text-neutral-900 dark:text-neutral-100 transition-colors shrink-0 leading-none animate-slide-in-left"
+          >
+            PS
+          </a>
+        </div>
+
+        {/* Navigation links */}
+        <div class="flex items-center justify-center animate-fade-in-up animation-delay-100">
+          <ul class="flex items-center gap-3 sm:gap-6">
+            {navEntries.map((entry) => (
+              <li class="flex">
+                <a
+                  href={entry.path}
+                  class="inline-flex h-10 md:h-8 items-center text-sm font-medium text-neutral-600 dark:text-neutral-400 transition-colors hover:text-neutral-900 dark:hover:text-neutral-100 leading-none"
+                >
+                  {entry.label}
+                </a>
+              </li>
+            ))}
+          </ul>
+        </div>
+
+        {/* Theme toggle */}
+        <div class="flex items-center justify-end">
+          <div class="inline-flex h-10 md:h-8 items-center animate-slide-in-right animation-delay-100">
+            <button
+              id="ps-theme-btn"
+              type="button"
+              aria-label="Toggle colour theme"
+              class="rounded-lg p-2 transition-all duration-300 hover:bg-neutral-100 dark:hover:bg-neutral-800 hover:scale-110"
+            >
+              <span id="ps-theme-icon" class="text-lg leading-none">☀</span>
+            </button>
+          </div>
+        </div>
+
+      </nav>
+    </header>
+
+    {/* ── Page content ── */}
+    <slot />
+
+    {/* ── Footer ── */}
+    <footer class="w-full border-t border-gray-200 dark:border-neutral-800 transition-colors animate-fade-in-up animation-delay-100">
+      <div class="mx-auto max-w-7xl px-6 py-6 flex flex-col sm:flex-row items-center justify-between text-sm text-gray-500 dark:text-neutral-400">
+        <span>&copy; {currentYear} Paul Savvas. All rights reserved.</span>
+        <a
+          href="https://astro.build"
+          class="mt-2 sm:mt-0 hover:underline"
+          target="_blank"
+          rel="noopener noreferrer"
+        >
+          Built with Astro
+        </a>
+      </div>
+    </footer>
+
+    {/* Theme-toggle behaviour */}
+    <script is:inline>
+      (function setupThemeToggle() {
+        var modes = ['light', 'dark', 'system'];
+        var icons = { light: '\u2600', dark: '\u263D', system: '\u2699' };
+
+        function currentMode() {
+          return localStorage.getItem('ps-theme') || 'system';
+        }
+
+        function applyMode(mode) {
+          var prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
+          var shouldBeDark = mode === 'dark' || (mode === 'system' && prefersDark);
+          document.documentElement.classList.toggle('dark', shouldBeDark);
+        }
+
+        function refreshIcon() {
+          var el = document.getElementById('ps-theme-icon');
+          if (el) el.textContent = icons[currentMode()] || icons.system;
+        }
+
+        var btn = document.getElementById('ps-theme-btn');
+        if (btn) {
+          btn.addEventListener('click', function () {
+            var idx = modes.indexOf(currentMode());
+            var next = modes[(idx + 1) % modes.length];
+            localStorage.setItem('ps-theme', next);
+            applyMode(next);
+            refreshIcon();
+          });
+        }
+
+        // React to OS-level changes when mode is "system"
+        window.matchMedia('(prefers-color-scheme: dark)').addEventListener('change', function () {
+          applyMode(currentMode());
+        });
+
+        applyMode(currentMode());
+        refreshIcon();
+      })();
+    </script>
+  </body>
+</html>
