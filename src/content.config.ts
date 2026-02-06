@@ -23,7 +23,7 @@ const projectsCollection = defineCollection({
           label: z.string(),
           href: z.string(),
           primary: z.boolean().optional(),
-        }),
+        })
       )
       .optional(),
   }),

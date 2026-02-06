@@ -3,8 +3,7 @@
 export const shortlinks: Record<string, string> = {
   example: 'https://example.com',
   infantguard: '/projects/infantguard',
-  contact:
-    'https://psavvas.notion.site/15770b9af471809da736d4e77a090ce0',
+  contact: 'https://psavvas.notion.site/15770b9af471809da736d4e77a090ce0',
   linkedin: 'https://www.linkedin.com/in/pauldsavvas',
   gravatar: 'https://www.gravatar.com/avatar/paulsavvas',
   github: 'https://github.com/psavvas',
