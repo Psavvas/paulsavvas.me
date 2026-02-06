@@ -6,10 +6,15 @@ interface Props {
   description?: string;
 }
 
-const { title, description = 'Paul Savvas — student engineer building practical tools across software, hardware, and 3D design.' } = Astro.props;
+const {
+  title,
+  description = 'Paul Savvas — student engineer building practical tools across software, hardware, and 3D design.',
+} = Astro.props;
 
 const siteUrl = 'https://paulsavvas.me';
-const fullTitle = title.includes('Paul Savvas') ? title : `${title} | Paul Savvas`;
+const fullTitle = title.includes('Paul Savvas')
+  ? title
+  : `${title} | Paul Savvas`;
 
 const navEntries = [
   { label: 'Home', path: '/' },
@@ -47,7 +52,9 @@ const currentYear = new Date().getFullYear();
     <script is:inline>
       (function applyStoredTheme() {
         var stored = localStorage.getItem('ps-theme');
-        var prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
+        var prefersDark = window.matchMedia(
+          '(prefers-color-scheme: dark)'
+        ).matches;
         var useDark = stored === 'dark' || (stored !== 'light' && prefersDark);
         document.documentElement.classList.toggle('dark', useDark);
       })();
@@ -56,49 +63,92 @@ const currentYear = new Date().getFullYear();
 
   <body>
     {/* ── Navbar ── */}
-    <header class="sticky top-0 z-50 border-b border-neutral-200 dark:border-neutral-800 bg-white/80 dark:bg-neutral-950/80 backdrop-blur transition-colors animate-fade-in">
-      <nav class="mx-auto grid h-16 md:h-14 max-w-6xl grid-cols-3 items-center px-4 sm:px-6">
-
+    <header
+      id="ps-navbar"
+      class="sticky top-0 z-50 border-b border-neutral-200 dark:border-neutral-800 bg-white/80 dark:bg-neutral-950/80 backdrop-blur transition-colors"
+    >
+      <nav
+        class="mx-auto grid h-16 md:h-14 max-w-6xl grid-cols-3 items-center px-4 sm:px-6"
+      >
         {/* Brand */}
         <div class="flex items-center">
           <a
             href="/"
-            class="inline-flex h-10 md:h-8 items-center text-lg font-semibold tracking-tight text-neutral-900 dark:text-neutral-100 transition-colors shrink-0 leading-none animate-slide-in-left"
+            id="ps-navbar-brand"
+            class="inline-flex h-10 md:h-8 items-center text-lg font-semibold tracking-tight text-neutral-900 dark:text-neutral-100 transition-colors shrink-0 leading-none"
           >
             PS
           </a>
         </div>
 
         {/* Navigation links */}
-        <div class="flex items-center justify-center animate-fade-in-up animation-delay-100">
+        <div id="ps-navbar-links" class="flex items-center justify-center">
           <ul class="flex items-center gap-3 sm:gap-6">
-            {navEntries.map((entry) => (
-              <li class="flex">
-                <a
-                  href={entry.path}
-                  class="inline-flex h-10 md:h-8 items-center text-sm font-medium text-neutral-600 dark:text-neutral-400 transition-colors hover:text-neutral-900 dark:hover:text-neutral-100 leading-none"
-                >
-                  {entry.label}
-                </a>
-              </li>
-            ))}
+            {
+              navEntries.map((entry) => (
+                <li class="flex">
+                  <a
+                    href={entry.path}
+                    class="inline-flex h-10 md:h-8 items-center text-sm font-medium text-neutral-600 dark:text-neutral-400 transition-colors hover:text-neutral-900 dark:hover:text-neutral-100 leading-none"
+                  >
+                    {entry.label}
+                  </a>
+                </li>
+              ))
+            }
           </ul>
         </div>
 
         {/* Theme toggle */}
         <div class="flex items-center justify-end">
-          <div class="inline-flex h-10 md:h-8 items-center animate-slide-in-right animation-delay-100">
+          <div
+            id="ps-navbar-theme"
+            class="inline-flex h-10 md:h-8 items-center"
+          >
             <button
               id="ps-theme-btn"
               type="button"
               aria-label="Toggle colour theme"
               class="rounded-lg p-2 transition-all duration-300 hover:bg-neutral-100 dark:hover:bg-neutral-800 hover:scale-110"
             >
-              <span id="ps-theme-icon" class="text-lg leading-none">☀</span>
+              <svg
+                id="ps-theme-icon"
+                class="h-5 w-5 text-neutral-700 dark:text-neutral-300"
+                fill="none"
+                stroke="currentColor"
+                viewBox="0 0 24 24"
+              >
+                <!-- Sun icon (light mode) -->
+                <path
+                  id="icon-light"
+                  class="hidden"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  stroke-width="2"
+                  d="M12 3v1m0 16v1m9-9h-1M4 12H3m15.364 6.364l-.707-.707M6.343 6.343l-.707-.707m12.728 0l-.707.707M6.343 17.657l-.707.707M16 12a4 4 0 11-8 0 4 4 0 018 0z"
+                ></path>
+                <!-- Moon icon (dark mode) -->
+                <path
+                  id="icon-dark"
+                  class="hidden"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  stroke-width="2"
+                  d="M20.354 15.354A9 9 0 018.646 3.646 9.003 9.003 0 0012 21a9.003 9.003 0 008.354-5.646z"
+                ></path>
+                <!-- Computer icon (system mode) -->
+                <path
+                  id="icon-system"
+                  class="hidden"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  stroke-width="2"
+                  d="M9.75 17L9 20l-1 1h8l-1-1-.75-3M3 13h18M5 17h14a2 2 0 002-2V5a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"
+                ></path>
+              </svg>
             </button>
           </div>
         </div>
-
       </nav>
     </header>
 
@@ -106,8 +156,12 @@ const currentYear = new Date().getFullYear();
     <slot />
 
     {/* ── Footer ── */}
-    <footer class="w-full border-t border-gray-200 dark:border-neutral-800 transition-colors animate-fade-in-up animation-delay-100">
-      <div class="mx-auto max-w-7xl px-6 py-6 flex flex-col sm:flex-row items-center justify-between text-sm text-gray-500 dark:text-neutral-400">
+    <footer
+      class="w-full border-t border-gray-200 dark:border-neutral-800 transition-colors animate-fade-in-up animation-delay-100"
+    >
+      <div
+        class="mx-auto max-w-7xl px-6 py-6 flex flex-col sm:flex-row items-center justify-between text-sm text-gray-500 dark:text-neutral-400"
+      >
         <span>&copy; {currentYear} Paul Savvas. All rights reserved.</span>
         <a
           href="https://astro.build"
@@ -124,21 +178,39 @@ const currentYear = new Date().getFullYear();
     <script is:inline>
       (function setupThemeToggle() {
         var modes = ['light', 'dark', 'system'];
-        var icons = { light: '\u2600', dark: '\u263D', system: '\u2699' };
 
         function currentMode() {
           return localStorage.getItem('ps-theme') || 'system';
         }
 
         function applyMode(mode) {
-          var prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
-          var shouldBeDark = mode === 'dark' || (mode === 'system' && prefersDark);
+          var prefersDark = window.matchMedia(
+            '(prefers-color-scheme: dark)'
+          ).matches;
+          var shouldBeDark =
+            mode === 'dark' || (mode === 'system' && prefersDark);
           document.documentElement.classList.toggle('dark', shouldBeDark);
         }
 
         function refreshIcon() {
-          var el = document.getElementById('ps-theme-icon');
-          if (el) el.textContent = icons[currentMode()] || icons.system;
+          var mode = currentMode();
+          // Hide all icons
+          var iconLight = document.getElementById('icon-light');
+          var iconDark = document.getElementById('icon-dark');
+          var iconSystem = document.getElementById('icon-system');
+
+          if (iconLight) iconLight.classList.add('hidden');
+          if (iconDark) iconDark.classList.add('hidden');
+          if (iconSystem) iconSystem.classList.add('hidden');
+
+          // Show the appropriate icon
+          if (mode === 'light' && iconLight) {
+            iconLight.classList.remove('hidden');
+          } else if (mode === 'dark' && iconDark) {
+            iconDark.classList.remove('hidden');
+          } else if (iconSystem) {
+            iconSystem.classList.remove('hidden');
+          }
         }
 
         var btn = document.getElementById('ps-theme-btn');
@@ -153,12 +225,45 @@ const currentYear = new Date().getFullYear();
         }
 
         // React to OS-level changes when mode is "system"
-        window.matchMedia('(prefers-color-scheme: dark)').addEventListener('change', function () {
-          applyMode(currentMode());
-        });
+        window
+          .matchMedia('(prefers-color-scheme: dark)')
+          .addEventListener('change', function () {
+            applyMode(currentMode());
+          });
 
         applyMode(currentMode());
         refreshIcon();
+      })();
+    </script>
+
+    {/* Navbar animation - only on first load */}
+    <script is:inline>
+      (function animateNavbarOnFirstLoad() {
+        // Check if this is the first page load in this session
+        var hasAnimated = sessionStorage.getItem('ps-navbar-animated');
+
+        if (!hasAnimated) {
+          // Mark as animated for the rest of the session
+          sessionStorage.setItem('ps-navbar-animated', 'true');
+
+          // Add animation classes
+          var navbar = document.getElementById('ps-navbar');
+          var brand = document.getElementById('ps-navbar-brand');
+          var links = document.getElementById('ps-navbar-links');
+          var theme = document.getElementById('ps-navbar-theme');
+
+          if (navbar) navbar.classList.add('animate-fade-in');
+          if (brand) brand.classList.add('animate-slide-in-left');
+          if (links) {
+            links.classList.add('animate-fade-in-up', 'animation-delay-100');
+          }
+          if (theme) {
+            theme.classList.add(
+              'animate-slide-in-right',
+              'animation-delay-100'
+            );
+          }
+        }
       })();
     </script>
   </body>

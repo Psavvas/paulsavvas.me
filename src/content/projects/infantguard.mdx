@@ -29,12 +29,12 @@ Forgotten Baby Syndrome (FSD) is a primary driver of Pediatric Vehicular Heatstr
 
 ## Features
 
-- ***Use of Bluetooth Fob:*** InfantGuard uses a Bluetooth device, in this case a BLE iBeacon attached to the car keys, to detect the parent's presence in the vehicle. This allows for Arduino to better know the current scenario and take more appropriate actions.
-- ***Text Notifications about forgotten infant:*** InfantGuard uses text notifications to alert the user if their infant is left unsupervised in the vehicle. If temperatures begin nearing dangerous levels, InfantGuard will text the parent in a dedicated alert, making sure to give the vehicle's current temperature. If temperatures reach deadly levels the user will be sent an emergency text, notifying them of the situation and that emergency services have been contacted. In all these texts the vehicle's location is always attached.
-- ***Emergency Services Alert:*** If vehicle temperatures reach deadly levels, InfantGuard will automatically text emergency services, including the vehicle make and model, temperature and location. This is to allow for a quick response that could help save the infant's life.
-- ***Manual Reset:*** If for some reason InfantGuard needs to be manually reset, a button present in the vehicle is available. Once pressed the system will stop monitoring for 15 minutes, before beginning scanning again.
-- ***Status Notifications:*** InfantGuard provides the parent with constant status notifications. When the system is manually deactivated, the parent will receive a confirmation text, before receiving another one when the system reactivates. Furthermore the parent can also be notified with other texts, like when the system first boots up and is connected.
-- ***Long Lasting Battery Life:*** InfantGuard is designed to have a long lasting battery, so that it can continue monitoring even if the vehicle is turned off. The current 10000mAh Belkin Battery Pack allows for roughly 80 hours of straight use. However the battery pack can recharge in roughly 4 hrs., so InfantGuard has been designed to recharge when the vehicle is turned on, and use battery when the vehicle is turned off.
+- **_Use of Bluetooth Fob:_** InfantGuard uses a Bluetooth device, in this case a BLE iBeacon attached to the car keys, to detect the parent's presence in the vehicle. This allows for Arduino to better know the current scenario and take more appropriate actions.
+- **_Text Notifications about forgotten infant:_** InfantGuard uses text notifications to alert the user if their infant is left unsupervised in the vehicle. If temperatures begin nearing dangerous levels, InfantGuard will text the parent in a dedicated alert, making sure to give the vehicle's current temperature. If temperatures reach deadly levels the user will be sent an emergency text, notifying them of the situation and that emergency services have been contacted. In all these texts the vehicle's location is always attached.
+- **_Emergency Services Alert:_** If vehicle temperatures reach deadly levels, InfantGuard will automatically text emergency services, including the vehicle make and model, temperature and location. This is to allow for a quick response that could help save the infant's life.
+- **_Manual Reset:_** If for some reason InfantGuard needs to be manually reset, a button present in the vehicle is available. Once pressed the system will stop monitoring for 15 minutes, before beginning scanning again.
+- **_Status Notifications:_** InfantGuard provides the parent with constant status notifications. When the system is manually deactivated, the parent will receive a confirmation text, before receiving another one when the system reactivates. Furthermore the parent can also be notified with other texts, like when the system first boots up and is connected.
+- **_Long Lasting Battery Life:_** InfantGuard is designed to have a long lasting battery, so that it can continue monitoring even if the vehicle is turned off. The current 10000mAh Belkin Battery Pack allows for roughly 80 hours of straight use. However the battery pack can recharge in roughly 4 hrs., so InfantGuard has been designed to recharge when the vehicle is turned on, and use battery when the vehicle is turned off.
 
 ## Hardware
 
@@ -63,35 +63,83 @@ To allow for the car seat to easily be removed two docking components, 1 for eac
 
 Both of these files can be found as STL files on Thingiverse at the following link: [https://www.thingiverse.com/psavvas/collections/43677561/things](https://www.thingiverse.com/psavvas/collections/43677561/things)
 
-<div style={{display: 'flex', gap: '12px', justifyContent: 'center', flexWrap: 'wrap'}}>
-  <img src="https://github.com/user-attachments/assets/edfd0030-a746-4da9-93bb-535f2fd2935c" alt="InfantGuard Mountable FSR Docking Components 1" style={{width: '320px', maxWidth: '100%'}} />
-  <img src="https://github.com/user-attachments/assets/33637767-4be1-48d4-a11b-8721f7af63bf" alt="InfantGuard Mountable FSR Docking Components 2" style={{width: '320px', maxWidth: '100%'}} />
+<div
+  style={{
+    display: 'flex',
+    gap: '12px',
+    justifyContent: 'center',
+    flexWrap: 'wrap',
+  }}
+>
+  <img
+    src="https://github.com/user-attachments/assets/edfd0030-a746-4da9-93bb-535f2fd2935c"
+    alt="InfantGuard Mountable FSR Docking Components 1"
+    style={{ width: '320px', maxWidth: '100%' }}
+  />
+  <img
+    src="https://github.com/user-attachments/assets/33637767-4be1-48d4-a11b-8721f7af63bf"
+    alt="InfantGuard Mountable FSR Docking Components 2"
+    style={{ width: '320px', maxWidth: '100%' }}
+  />
 </div>
-<p align="center"><strong>Mountable InfantGuard FSR Docking Components</strong></p>
+<p align="center">
+  <strong>Mountable InfantGuard FSR Docking Components</strong>
+</p>
 
-<div style={{display: 'flex', gap: '12px', justifyContent: 'center', flexWrap: 'wrap'}}>
-  <img src="https://github.com/user-attachments/assets/3b0f6c85-e666-4a14-8905-3b7371bfaaf1" alt="InfantGuard Generic FSR Docking Components 1" style={{width: '320px', maxWidth: '100%'}} />
-  <img src="https://github.com/user-attachments/assets/80aefcca-c5c2-435d-acca-245b43f3f05a" alt="InfantGuard Generic FSR Docking Components 2" style={{width: '320px', maxWidth: '100%'}} />
+<div
+  style={{
+    display: 'flex',
+    gap: '12px',
+    justifyContent: 'center',
+    flexWrap: 'wrap',
+  }}
+>
+  <img
+    src="https://github.com/user-attachments/assets/3b0f6c85-e666-4a14-8905-3b7371bfaaf1"
+    alt="InfantGuard Generic FSR Docking Components 1"
+    style={{ width: '320px', maxWidth: '100%' }}
+  />
+  <img
+    src="https://github.com/user-attachments/assets/80aefcca-c5c2-435d-acca-245b43f3f05a"
+    alt="InfantGuard Generic FSR Docking Components 2"
+    style={{ width: '320px', maxWidth: '100%' }}
+  />
 </div>
-<p align="center"><strong>Generic InfantGuard FSR Docking Components</strong></p>
+<p align="center">
+  <strong>Generic InfantGuard FSR Docking Components</strong>
+</p>
 
 ### Wiring
 
 InfantGuard's wiring uses generic Dupont Wires that can be either used on a breadboard and the Arduino or soldered onto a circuit if preferred.
 
-<img width="1280" height="720" alt="InfantGuard Circuit Schematic" src="https://github.com/user-attachments/assets/470edf90-954b-477a-a258-aee44d707836" />
-<p align="center"><strong>InfantGuard Circuit Schematic</strong></p>
+<img
+  width="1280"
+  height="720"
+  alt="InfantGuard Circuit Schematic"
+  src="https://github.com/user-attachments/assets/470edf90-954b-477a-a258-aee44d707836"
+/>
+<p align="center">
+  <strong>InfantGuard Circuit Schematic</strong>
+</p>
 
 ## Software
 
-InfantGuard is an open source project on GitHub. All coding files are publicly available on GitHub; to learn more about contributing, visit the *Contribute* section of this page. This project is made up of two major sections: the on-device code and the cloud code. These were coded in Arduino Sketch and JavaScript respectively.
+InfantGuard is an open source project on GitHub. All coding files are publicly available on GitHub; to learn more about contributing, visit the _Contribute_ section of this page. This project is made up of two major sections: the on-device code and the cloud code. These were coded in Arduino Sketch and JavaScript respectively.
 
 ### General Overview
 
 The following flow chart exhibits the general flow of InfantGuard across both on-device programs and cloud programs:
 
-<img width="1280" height="720" alt="InfantGuard General Code Flow" src="https://github.com/user-attachments/assets/9f1b2c82-039d-49e1-8833-9332df4062f9" />
-<p align="center"><strong>InfantGuard General Code Flow</strong></p>
+<img
+  width="1280"
+  height="720"
+  alt="InfantGuard General Code Flow"
+  src="https://github.com/user-attachments/assets/9f1b2c82-039d-49e1-8833-9332df4062f9"
+/>
+<p align="center">
+  <strong>InfantGuard General Code Flow</strong>
+</p>
 
 ### Text Notification Workflow
 
@@ -108,13 +156,14 @@ On-device code of InfantGuard, being coded mostly in Arduino Sketch has the majo
 
 ### Off-Device Code
 
-***Webhook.site:***
-Since the SIM7000A can only establish an HTTP connection, websites that don't require a secure connection were needed. A custom webhook.site was then created which allowed for the Arduino to communicate with the webhook, have the webhook parse the data, and create a custom action that redirects the information to a secure Cloudflare Worker. The webhook uses an HTTP redirect action that forwards to the Cloudflare Worker. The action uses a 'GET' method with the following programmable URL: 
+**_Webhook.site:_**
+Since the SIM7000A can only establish an HTTP connection, websites that don't require a secure connection were needed. A custom webhook.site was then created which allowed for the Arduino to communicate with the webhook, have the webhook parse the data, and create a custom action that redirects the information to a secure Cloudflare Worker. The webhook uses an HTTP redirect action that forwards to the Cloudflare Worker. The action uses a 'GET' method with the following programmable URL:
+
 ```
 https://workerURLgoeshere.workers.dev/?cord1=$request.query.cord1$&cord2=$request.query.cord2$&temp=$request.query.temp$&type=$request.query.type$
 ```
 
-***Cloudflare Worker:***
+**_Cloudflare Worker:_**
 Once webhook.site relays the information to the Cloudflare Worker, it parses the URL data and determines which text message template to send. It then fills out the variables in the message template like temperature or vehicle location and securely communicates with the Twilio API. Twilio is the text message provider that was chosen to securely provide text notifications to the user's phone. The full Cloudflare worker code can be found in the file: `Cloudflare.js` This workflow also helps protect the API keys which can be stored as secret variables inside the Cloudflare Worker dashboard.
 
 ## Full Parts List
@@ -143,4 +192,4 @@ If you're interested in contributing feel free to fork the repository and submit
 
 ---
 
-*InfantGuard was created as a 2026 Engineering Fair Project for the Great Mills High School STEM Academy and the St. Mary's County Science & Engineering Fair. It was created by Paul Savvas.*
+_InfantGuard was created as a 2026 Engineering Fair Project for the Great Mills High School STEM Academy and the St. Mary's County Science & Engineering Fair. It was created by Paul Savvas._
