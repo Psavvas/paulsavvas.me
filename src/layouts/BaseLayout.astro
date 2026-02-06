@@ -58,6 +58,14 @@ const currentYear = new Date().getFullYear();
         var useDark = stored === 'dark' || (stored !== 'light' && prefersDark);
         document.documentElement.classList.toggle('dark', useDark);
       })();
+
+      // Navbar entrance animation — only on first site load in this session
+      (function navbarEntrance() {
+        if (!sessionStorage.getItem('ps-visited')) {
+          document.documentElement.classList.add('navbar-animate');
+          sessionStorage.setItem('ps-visited', '1');
+        }
+      })();
     </script>
   </head>
 
