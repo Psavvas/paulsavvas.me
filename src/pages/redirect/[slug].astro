@@ -78,10 +78,16 @@ const linkType = isInternal ? 'internal page' : 'external site';
   </div>
 
   <!-- Auto-redirect script -->
-  <script is:inline define:vars={{ destination }}>
+  <script is:inline data-destination={destination}>
     // Redirect after a brief delay to allow users to see the page
+    const REDIRECT_DELAY_MS = 1500;
+
+    // Destination is controlled server-side via shortlinks configuration
+    // and is validated during static site generation, not user input
+    const destination = document.currentScript.dataset.destination;
+
     setTimeout(() => {
       window.location.href = destination;
-    }, 1500);
+    }, REDIRECT_DELAY_MS);
   </script>
 </BaseLayout>
