@@ -1,4 +1,5 @@
 ---
+import BaseLayout from '../../layouts/BaseLayout.astro';
 import { shortlinks } from '../../data/site';
 
 export function getStaticPaths() {
@@ -14,11 +15,73 @@ if (!destination) {
   return Astro.redirect('/404');
 }
 
-// For internal (same-origin) paths, use Astro.redirect directly
-if (destination.startsWith('/')) {
-  return Astro.redirect(destination, 302);
-}
-
-// For external URLs, use Astro.redirect as well
-return Astro.redirect(destination, 302);
+// Determine if it's an internal or external link
+const isInternal = destination.startsWith('/');
+const linkType = isInternal ? 'internal page' : 'external site';
 ---
+
+<BaseLayout title={`Redirecting... | Paul Savvas`}>
+  <div
+    class="min-h-screen bg-white font-sans dark:bg-neutral-950 transition-colors"
+  >
+    <main
+      class="mx-auto flex w-full max-w-4xl flex-col items-center justify-center gap-6 px-6 py-24 text-center sm:px-16 sm:py-32 animate-fade-in"
+    >
+      <!-- Loading indicator -->
+      <div class="mb-4">
+        <div
+          class="h-12 w-12 animate-spin rounded-full border-4 border-neutral-200 border-t-neutral-900 dark:border-neutral-800 dark:border-t-neutral-100"
+        >
+        </div>
+      </div>
+
+      <!-- Status text -->
+      <p
+        class="text-sm font-medium uppercase tracking-wider text-neutral-600 dark:text-neutral-400"
+      >
+        Redirecting
+      </p>
+
+      <!-- Main heading -->
+      <h1
+        class="text-3xl font-semibold tracking-tight text-neutral-900 dark:text-neutral-100 sm:text-4xl"
+      >
+        Taking you to your destination...
+      </h1>
+
+      <!-- Description -->
+      <p
+        class="max-w-md text-base leading-7 text-neutral-700 dark:text-neutral-300"
+      >
+        You're being redirected to an {linkType}. If you're not redirected
+        automatically, click the button below.
+      </p>
+
+      <!-- Manual redirect button -->
+      <div class="mt-4">
+        <a
+          href={destination}
+          class="inline-flex items-center justify-center rounded-md border border-neutral-200 bg-white px-6 py-3 text-sm font-medium text-neutral-900 transition-all hover:bg-neutral-50 dark:border-neutral-800 dark:bg-neutral-950 dark:text-neutral-100 dark:hover:bg-neutral-900 hover-lift"
+        >
+          Continue to destination →
+        </a>
+      </div>
+
+      <!-- Destination info -->
+      <p class="mt-2 text-xs text-neutral-500 dark:text-neutral-500">
+        Destination: <code
+          class="rounded bg-neutral-100 px-1.5 py-0.5 dark:bg-neutral-900"
+          >{destination}</code
+        >
+      </p>
+    </main>
+  </div>
+
+  <!-- Auto-redirect script -->
+  <script is:inline define:vars={{ destination }}>
+    // Redirect after a brief delay to allow users to see the page
+    setTimeout(() => {
+      window.location.href = destination;
+    }, 1500);
+  </script>
+</BaseLayout>
