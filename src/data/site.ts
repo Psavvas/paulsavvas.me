@@ -9,6 +9,7 @@ export const shortlinks: Record<string, string> = {
   github: 'https://github.com/psavvas',
   thingiverse: 'https://www.thingiverse.com/psavvas',
   savvas3dprinting: 'https://psavvas.notion.site/savvas-3d-printing',
+  notion: 'https://www.notion.com/@paulsavvas',
 };
 
 // Project catalogue used by the projects listing page.
