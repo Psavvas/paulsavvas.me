@@ -336,7 +336,7 @@ html.dark .hero {
 .hero .button:hover,
 .hero .button:focus-visible {
   transform: translateY(-1.5px);
-  border-color: rgba(116, 249, 229, 0.5);
+  border-color: var(--hero-border);
 }
 
 .hero .button.primary:hover,
@@ -363,8 +363,8 @@ html.dark .hero {
 }
 
 .hero .chip:hover {
-  border-color: rgba(116, 249, 229, 0.45);
-  background: rgba(116, 249, 229, 0.08);
+  border-color: var(--hero-border);
+  background: rgba(255, 255, 255, 0.05);
   color: var(--hero-text);
   transform: translateY(-2px);
 }
@@ -404,7 +404,7 @@ html.dark .hero {
   padding: 20px 20px 18px;
   display: flex;
   flex-direction: column;
-  gap: 14px;
+  gap: 18px;
   min-height: 100%;
 }
 
@@ -415,12 +415,19 @@ html.dark .hero {
   gap: 12px;
 }
 
-.hero .pulse {
-  width: 14px;
-  height: 14px;
-  border-radius: 50%;
-  background: var(--hero-gradient);
-  box-shadow: 0 0 0 0 rgba(116, 249, 229, 0.32);
+.hero .live-pill {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 4px 10px;
+  border-radius: 999px;
+  font-size: 0.7rem;
+  font-weight: 700;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: #0a0c12;
+  background: linear-gradient(135deg, #5fd5c8, #b6e37a);
+  box-shadow: 0 0 0 0 rgba(95, 213, 200, 0.32);
   animation: heroPulse 2.6s infinite;
 }
 
@@ -470,6 +477,19 @@ html.dark .hero {
   border-radius: 12px;
   padding: 12px 14px;
 }
+
+.hero .meta-block.live-signal {
+  transition:
+    transform var(--hero-transition),
+    border-color var(--hero-transition),
+    background var(--hero-transition);
+}
+
+.hero .meta-block.live-signal:hover {
+  transform: translateY(-2px);
+  background: rgba(255, 255, 255, 0.05);
+  border-color: var(--hero-border);
+}
 .hero .meta-block--full {
   grid-column: 1 / -1;
 }
@@ -485,7 +505,36 @@ html.dark .hero {
 .hero .meta-block .value {
   color: var(--hero-text);
   font-weight: 600;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1px;
+  width: 100%;
   font-size: 0.98rem;
+}
+
+.hero .meta-block .value-link {
+  color: var(--hero-text);
+  display: inline-flex;
+  text-decoration-thickness: 2px;
+  text-underline-offset: 3px;
+}
+
+.hero .meta-block .value-arrow {
+  width: 20px;
+  height: 20px;
+  flex: 0 0 auto;
+  display: block;
+  align-items: center;
+  justify-content: center;
+  align-self: center;
+  transform: translateY(-8px);
+  transition: transform var(--hero-transition);
+}
+
+.hero .meta-block .value-link:hover .value-arrow,
+.hero .meta-block .value-link:focus-visible .value-arrow,
+.hero .meta-block.live-signal:hover .value-arrow {
+  transform: translate(4px, -1px);
 }
 
 /* Your markup uses data-reveal; ensure it's visible even without JS. */
@@ -519,6 +568,7 @@ html.dark .hero {
   }
 }
 
+
 @media (max-width: 960px) {
   .hero .hero-grid {
     grid-template-columns: 1fr;
@@ -527,7 +577,7 @@ html.dark .hero {
 
 @media (prefers-reduced-motion: reduce) {
   .hero [data-reveal],
-  .hero .pulse {
+  .hero .live-pill {
     animation: none !important;
   }
 
@@ -536,4 +586,9 @@ html.dark .hero {
   .hero .signal-card {
     transition: none !important;
   }
+}
+
+/* Blog typography: soften heading weight to match the post title. */
+.prose :where(h2, h3, h4, h5, h6) {
+  font-weight: 500;
 }
