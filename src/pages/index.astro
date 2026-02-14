@@ -28,8 +28,7 @@ const latestProject = projects
 const latestPost = blogPosts
   .slice()
   .sort(
-    (a, b) =>
-      new Date(b.data.date).getTime() - new Date(a.data.date).getTime()
+    (a, b) => new Date(b.data.date).getTime() - new Date(a.data.date).getTime()
   )[0];
 const projectCount = projects.length;
 const blogCount = blogPosts.length;
@@ -98,68 +97,70 @@ const blogCount = blogPosts.length;
           </div>
           <div class="hero-panel card" data-reveal>
             <div class="panel-head">
-              <p class="eyebrow"></p>
               <span class="live-pill" aria-label="Live">LIVE</span>
             </div>
-            <div class="signal-rail" id="signal-rail"></div>
             <div class="meta-row">
               <div class="meta-block meta-block--full live-signal">
                 <p class="label">Latest project</p>
-                {latestProject ? (
-                  <a
-                    class="value value-link"
-                    href={`/projects/${slugFromId(latestProject.id)}`}
-                  >
-                    <span class="value-text">{latestProject.data.title}</span>
-                    <svg
-                      class="value-arrow"
-                      viewBox="0 0 24 24"
-                      aria-hidden="true"
-                      focusable="false"
+                {
+                  latestProject ? (
+                    <a
+                      class="value value-link"
+                      href={`/projects/${slugFromId(latestProject.id)}`}
                     >
-                      <path
-                        d="M5 12h12m0 0-4-4m4 4-4 4"
-                        fill="none"
-                        stroke="currentColor"
-                        stroke-linecap="round"
-                        stroke-linejoin="round"
-                        stroke-width="2"
-                      />
-                    </svg>
-                  </a>
-                ) : (
-                  <p class="value">New project coming soon</p>
-                )}
+                      <span class="value-text">{latestProject.data.title}</span>
+                      <svg
+                        class="value-arrow"
+                        viewBox="0 0 24 24"
+                        aria-hidden="true"
+                        focusable="false"
+                      >
+                        <path
+                          d="M5 12h12m0 0-4-4m4 4-4 4"
+                          fill="none"
+                          stroke="currentColor"
+                          stroke-linecap="round"
+                          stroke-linejoin="round"
+                          stroke-width="2"
+                        />
+                      </svg>
+                    </a>
+                  ) : (
+                    <p class="value">New project coming soon</p>
+                  )
+                }
               </div>
             </div>
             <div class="meta-row">
               <div class="meta-block meta-block--full live-signal">
                 <p class="label">Latest blog post</p>
-                {latestPost ? (
-                  <a
-                    class="value value-link"
-                    href={`/blog/${slugFromId(latestPost.id)}`}
-                  >
-                    <span class="value-text">{latestPost.data.title}</span>
-                    <svg
-                      class="value-arrow"
-                      viewBox="0 0 24 24"
-                      aria-hidden="true"
-                      focusable="false"
+                {
+                  latestPost ? (
+                    <a
+                      class="value value-link"
+                      href={`/blog/${slugFromId(latestPost.id)}`}
                     >
-                      <path
-                        d="M5 12h12m0 0-4-4m4 4-4 4"
-                        fill="none"
-                        stroke="currentColor"
-                        stroke-linecap="round"
-                        stroke-linejoin="round"
-                        stroke-width="2"
-                      />
-                    </svg>
-                  </a>
-                ) : (
-                  <p class="value">New post coming soon</p>
-                )}
+                      <span class="value-text">{latestPost.data.title}</span>
+                      <svg
+                        class="value-arrow"
+                        viewBox="0 0 24 24"
+                        aria-hidden="true"
+                        focusable="false"
+                      >
+                        <path
+                          d="M5 12h12m0 0-4-4m4 4-4 4"
+                          fill="none"
+                          stroke="currentColor"
+                          stroke-linecap="round"
+                          stroke-linejoin="round"
+                          stroke-width="2"
+                        />
+                      </svg>
+                    </a>
+                  ) : (
+                    <p class="value">New post coming soon</p>
+                  )
+                }
               </div>
             </div>
             <div class="meta-row">
@@ -167,7 +168,8 @@ const blogCount = blogPosts.length;
                 <p class="label">Projects</p>
                 <a class="value value-link" href="/projects">
                   <span class="value-text">
-                    {projectCount} {projectCount === 1 ? 'project' : 'projects'}
+                    {projectCount}
+                    {projectCount === 1 ? 'project' : 'projects'}
                   </span>
                   <svg
                     class="value-arrow"
@@ -181,8 +183,7 @@ const blogCount = blogPosts.length;
                       stroke="currentColor"
                       stroke-linecap="round"
                       stroke-linejoin="round"
-                      stroke-width="2"
-                    />
+                      stroke-width="2"></path>
                   </svg>
                 </a>
               </div>
@@ -190,7 +191,8 @@ const blogCount = blogPosts.length;
                 <p class="label">Blog posts</p>
                 <a class="value value-link" href="/blog">
                   <span class="value-text">
-                    {blogCount} {blogCount === 1 ? 'post' : 'posts'}
+                    {blogCount}
+                    {blogCount === 1 ? 'post' : 'posts'}
                   </span>
                   <svg
                     class="value-arrow"
@@ -204,8 +206,7 @@ const blogCount = blogPosts.length;
                       stroke="currentColor"
                       stroke-linecap="round"
                       stroke-linejoin="round"
-                      stroke-width="2"
-                    />
+                      stroke-width="2"></path>
                   </svg>
                 </a>
               </div>
