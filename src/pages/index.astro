@@ -1,5 +1,37 @@
 ---
 import BaseLayout from '../layouts/BaseLayout.astro';
+import { getCollection } from 'astro:content';
+
+const projects = await getCollection('projects');
+const blogPosts = await getCollection('blog');
+
+function slugFromId(id: string) {
+  return id.replace(/\.mdx?$/, '');
+}
+
+function getProjectYear(project: (typeof projects)[number]): number {
+  const year = project.data.year;
+  if (!year) return 0;
+  if (Array.isArray(year)) {
+    return year
+      .map((value) => Number(value))
+      .filter((value) => !Number.isNaN(value))
+      .reduce((max, value) => Math.max(max, value), 0);
+  }
+  const parsed = Number(year);
+  return Number.isNaN(parsed) ? 0 : parsed;
+}
+
+const latestProject = projects
+  .slice()
+  .sort((a, b) => getProjectYear(b) - getProjectYear(a))[0];
+const latestPost = blogPosts
+  .slice()
+  .sort(
+    (a, b) => new Date(b.data.date).getTime() - new Date(a.data.date).getTime()
+  )[0];
+const projectCount = projects.length;
+const blogCount = blogPosts.length;
 ---
 
 <BaseLayout
@@ -65,47 +97,134 @@ import BaseLayout from '../layouts/BaseLayout.astro';
           </div>
           <div class="hero-panel card" data-reveal>
             <div class="panel-head">
-              <p class="eyebrow">Live signals</p>
-              <div class="pulse"></div>
+              <span class="live-pill" aria-label="Live">LIVE</span>
             </div>
-            <div class="signal-rail" id="signal-rail"></div>
             <div class="meta-row">
-              <div class="meta-block meta-block--full">
-                <p class="label">Philosophy</p>
-                <p class="value">
-                  Build, test, refine, ship — then improve it again
-                </p>
+              <div class="meta-block meta-block--full live-signal">
+                <p class="label">Latest project</p>
+                {
+                  latestProject ? (
+                    <a
+                      class="value value-link"
+                      href={`/projects/${slugFromId(latestProject.id)}`}
+                    >
+                      <span class="value-text">{latestProject.data.title}</span>
+                      <svg
+                        class="value-arrow"
+                        viewBox="0 0 24 24"
+                        aria-hidden="true"
+                        focusable="false"
+                      >
+                        <path
+                          d="M5 12h12m0 0-4-4m4 4-4 4"
+                          fill="none"
+                          stroke="currentColor"
+                          stroke-linecap="round"
+                          stroke-linejoin="round"
+                          stroke-width="2"
+                        />
+                      </svg>
+                    </a>
+                  ) : (
+                    <p class="value">New project coming soon</p>
+                  )
+                }
               </div>
             </div>
             <div class="meta-row">
-              <div class="meta-block meta-block--full">
-                <p class="label">Priorities</p>
-                <p class="value">
-                  Impact over complexity · Durability over speed · Real problems
-                  over theory
-                </p>
+              <div class="meta-block meta-block--full live-signal">
+                <p class="label">Latest blog post</p>
+                {
+                  latestPost ? (
+                    <a
+                      class="value value-link"
+                      href={`/blog/${slugFromId(latestPost.id)}`}
+                    >
+                      <span class="value-text">{latestPost.data.title}</span>
+                      <svg
+                        class="value-arrow"
+                        viewBox="0 0 24 24"
+                        aria-hidden="true"
+                        focusable="false"
+                      >
+                        <path
+                          d="M5 12h12m0 0-4-4m4 4-4 4"
+                          fill="none"
+                          stroke="currentColor"
+                          stroke-linecap="round"
+                          stroke-linejoin="round"
+                          stroke-width="2"
+                        />
+                      </svg>
+                    </a>
+                  ) : (
+                    <p class="value">New post coming soon</p>
+                  )
+                }
               </div>
             </div>
             <div class="meta-row">
-              <div class="meta-block meta-block--full">
-                <p class="label">Design Principle</p>
-                <p class="value">Make it simple, make it work, make it last</p>
+              <div class="meta-block live-signal">
+                <p class="label">Projects</p>
+                <a class="value value-link" href="/projects">
+                  <span class="value-text">
+                    {projectCount}
+                    {projectCount === 1 ? 'project' : 'projects'}
+                  </span>
+                  <svg
+                    class="value-arrow"
+                    viewBox="0 0 24 24"
+                    aria-hidden="true"
+                    focusable="false"
+                  >
+                    <path
+                      d="M5 12h12m0 0-4-4m4 4-4 4"
+                      fill="none"
+                      stroke="currentColor"
+                      stroke-linecap="round"
+                      stroke-linejoin="round"
+                      stroke-width="2"></path>
+                  </svg>
+                </a>
+              </div>
+              <div class="meta-block live-signal">
+                <p class="label">Blog posts</p>
+                <a class="value value-link" href="/blog">
+                  <span class="value-text">
+                    {blogCount}
+                    {blogCount === 1 ? 'post' : 'posts'}
+                  </span>
+                  <svg
+                    class="value-arrow"
+                    viewBox="0 0 24 24"
+                    aria-hidden="true"
+                    focusable="false"
+                  >
+                    <path
+                      d="M5 12h12m0 0-4-4m4 4-4 4"
+                      fill="none"
+                      stroke="currentColor"
+                      stroke-linecap="round"
+                      stroke-linejoin="round"
+                      stroke-width="2"></path>
+                  </svg>
+                </a>
               </div>
             </div>
             <div class="meta-row">
-              <div class="meta-block meta-block--full">
-                <p class="label">Languages</p>
-                <p class="value">English, French, Spanish (Intermediate)</p>
+              <div class="meta-block live-signal">
+                <p class="label">School</p>
+                <p class="value">GMHS STEM Academy</p>
               </div>
-            </div>
-            <div class="meta-row">
-              <div class="meta-block">
+              <div class="meta-block live-signal">
                 <p class="label">Location</p>
                 <p class="value">Maryland, USA</p>
               </div>
-              <div class="meta-block">
-                <p class="label">School</p>
-                <p class="value">SMCPS - STEM Academy</p>
+            </div>
+            <div class="meta-row">
+              <div class="meta-block meta-block--full live-signal">
+                <p class="label">Languages</p>
+                <p class="value">English, French, Spanish (Intermediate)</p>
               </div>
             </div>
           </div>
